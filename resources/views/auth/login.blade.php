@@ -33,9 +33,9 @@
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
         <!--[if lt IE 9]>
-                                                                    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-                                                                    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-                                                                    <![endif]-->
+                                                                                            <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+                                                                                            <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+                                                                                            <![endif]-->
     </head>
 
     <body>
@@ -223,7 +223,7 @@
         #ptr-element {
             text-align: center;
             font-size: 16px;
-            color: #999;
+            color: #273094;
             padding: 10px;
             margin-top: -20px;
         }
@@ -241,11 +241,9 @@
             }
         });
 
-        // Initialize pull-to-refresh
         var ptr = PullToRefresh.init({
             mainElement: 'body',
             onRefresh: function() {
-                // Put your refresh logic here
                 location.reload();
             }
         });
