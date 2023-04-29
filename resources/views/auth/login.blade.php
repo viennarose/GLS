@@ -26,15 +26,23 @@
             integrity="sha512-8vq2g5nHE062j3xor4XxPeZiPjmRDh6wlufQlfC6pdQ/9urJkU07NM0tEREeymP++NczacJ/Q59ul+/K2eYvcg=="
             crossorigin="anonymous" />
 
+        <!-- Include pull-to-refresh.js library -->
+        <script src="https://cdn.jsdelivr.net/npm/pulltorefreshjs@0.1.15/dist/pulltorefresh.min.js"></script>
+
+
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
         <!--[if lt IE 9]>
-                                                                <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-                                                                <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-                                                                <![endif]-->
+                                                                    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+                                                                    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+                                                                    <![endif]-->
     </head>
 
     <body>
+
+        <!-- Add pull-to-refresh indicator -->
+        <div id="ptr-element"></div>
+
         <div class="container" style="position:relative; top: -50px;">
             <div class="wrapper">
                 <div style="display: flex; justify-content: center;">
@@ -211,6 +219,14 @@
         form .signup-link a:hover {
             text-decoration: underline;
         }
+
+        #ptr-element {
+            text-align: center;
+            font-size: 16px;
+            color: #999;
+            padding: 10px;
+            margin-top: -20px;
+        }
     </style>
 
     <script>
@@ -222,6 +238,15 @@
                 passwordInput.type = 'text';
             } else {
                 passwordInput.type = 'password';
+            }
+        });
+
+        // Initialize pull-to-refresh
+        var ptr = PullToRefresh.init({
+            mainElement: 'body',
+            onRefresh: function() {
+                // Put your refresh logic here
+                location.reload();
             }
         });
     </script>
