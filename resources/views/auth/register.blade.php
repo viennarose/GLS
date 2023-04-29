@@ -39,6 +39,10 @@
     </head>
 
     <body>
+
+        <!-- Add pull-to-refresh indicator -->
+        <div id="ptr-element"></div>
+        
         <div class="container" style="position:relative; top: -50px;">
             <div class="wrapper">
 
