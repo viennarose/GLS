@@ -33,21 +33,20 @@
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
         <!--[if lt IE 9]>
-                                                                            <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-                                                                            <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-                                                                            <![endif]-->
+                                                                                                                    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+                                                                                                                    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+                                                                                                                    <![endif]-->
     </head>
 
     <body>
 
         <!-- Add pull-to-refresh indicator -->
         <div id="ptr-element"></div>
-        
+
         <div class="container" style="position:relative; top: -50px;">
             <div class="wrapper">
 
-                <p
-                    style="font-size: 20px; text-align: center; font-weight: 500; color:rgb(77, 77, 77); position:relative; top:10px;">
+                <p class="reg_title">
                     Register an Account</p>
 
                 <form method="POST" action="{{ route('register') }}">
@@ -97,8 +96,7 @@
                             placeholder="Confirm Password" required autocomplete="new-password">
                     </div>
 
-                    <label for="show-password-checkbox"
-                        style="display: flex; align-items: center; font-weight: 400; font-size: 13px; color:#716e6e;">
+                    <label for="show-password-checkbox" class="show_pass">
                         <input type="checkbox" id="show-password-checkbox" style="margin-right: 5px;">
                         Show password
                     </label>
@@ -125,8 +123,12 @@
         }
 
         body {
-            background: #e1e1e1;
+            background-color: #565656;
             overflow: hidden;
+            background-image: url("img/Plaridel.jpg");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
         }
 
         ::selection {
@@ -169,8 +171,7 @@
         }
 
         form .row input:focus {
-            border-color: #273094;
-            box-shadow: inset 0px 0px 2px 2px rgba(26, 188, 156, 0.25);
+            border-color: #565656;
         }
 
         form .row input::placeholder {
@@ -183,8 +184,8 @@
             height: 100%;
             color: #fff;
             font-size: 18px;
-            background: #273094;
-            border: 1px solid #273094;
+            background: #565656;
+            border: 1px solid #565656;
             border-radius: 5px 0 0 5px;
             display: flex;
             align-items: center;
@@ -197,7 +198,7 @@
             font-size: 20px;
             font-weight: 500;
             padding-left: 0px;
-            background: #273094;
+            background: #565656;
             border: none;
             cursor: pointer;
         }
@@ -227,6 +228,23 @@
             color: #273094;
             padding: 10px;
             margin-top: -20px;
+        }
+
+        .reg_title {
+            font-size: 20px;
+            text-align: center;
+            font-weight: 500;
+            color: rgb(77, 77, 77);
+            position: relative;
+            top: 10px;
+        }
+
+        .show_pass {
+            display: flex;
+            align-items: center;
+            font-weight: normal;
+            font-size: 13px;
+            color: #716e6e;
         }
     </style>
 
