@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('admin.layouts.app')
 
 @section('content')
     <div class="text-center"><a href="{{ route('admin.home_dashboard') }}">Back to Home Page</a></div>
