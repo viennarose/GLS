@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="text-center"><a href="{{ route('home') }}">Back to Home Page</a></div>
+    <div class="text-center"><a href="{{ route('admin.home_dashboard') }}">Back to Home Page</a></div>
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
