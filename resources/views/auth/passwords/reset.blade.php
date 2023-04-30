@@ -137,12 +137,12 @@
 
         .card-header {
             color: white;
-            background-color: #273094;
+            background-color: #565656;
 
         }
 
         .btn-res {
-            background-color: #273094;
+            background-color: #565656;
             color: white;
             font-size: 12px;
         }
@@ -154,7 +154,7 @@
 
         .btn-login {
             color: white;
-            background-color: #565656;
+            background-color: #273094;
             font-size: 12px;
         }
 
