@@ -55,8 +55,7 @@
                                 <p class="text-center"> Your account is waiting for administrator approval.</p>
                                 <hr>
                                 An email notification will be sent to you once your account has been approved.
-                                <br>
-                                Please check back later.
+                                <p style="color:#273094;">Please check back later.</p>
                             </div>
                             {{-- <div class="text-center" style="margin-top:-20px;">
                                 <button id="notify-admin-button" class="btn  text-danger">Send another request?</button>
