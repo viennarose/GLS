@@ -22,6 +22,13 @@
     </a>
 </li>
 
+<li class="nav-item">
+    <a href="{{ route('admin.files.index') }}"
+        class="nav-link {{ Request::is('admin/files/index*') ? 'bg-secondary active' : '' }}">
+        <p class="text-white">Users</p>
+        <i class="fas fa-users fa-pull-left fa-md text-white"></i>
+    </a>
+</li>
 
 <style scoped>
     .nav-item p {

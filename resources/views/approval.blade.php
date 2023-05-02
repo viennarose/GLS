@@ -33,9 +33,9 @@
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
         <!--[if lt IE 9]>
-                                                                                                                                                                                                                                                                                                                                        <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-                                                                                                                                                                                                                                                                                                                                        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-                                                                                                                                                                                                                                                                                                                                        <![endif]-->
+                                                                                                                                                                                                                                                                                                                                                                                                <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+                                                                                                                                                                                                                                                                                                                                                                                                <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+                                                                                                                                                                                                                                                                                                                                                                                                <![endif]-->
     </head>
 
     <body>
@@ -56,15 +56,11 @@
                                 <hr>
                                 An email notification will be sent to you once your account has been approved.
                                 <p style="color:#273094;">Please check back later.</p>
+
+                                <div class="text-center" style="position:relative; top: -10px;"><a
+                                        href="{{ route('user.resend_approval_notification', Auth::user()->id) }}"
+                                        class="btn text-danger">Resend Approval Notification</a></div>
                             </div>
-                            {{-- <div class="text-center" style="margin-top:-20px;">
-                                <button id="notify-admin-button" class="btn  text-danger">Send another request?</button>
-                            </div> --}}
-                            {{-- <form method="POST" action="{{ route('resend.approval.request') }}">
-                                @csrf
-                                <button type="submit" class="btn text-danger">Resend Approval Request</button>
-                            </form> --}}
-                            <hr>
                             <div class="mr-2 mb-2 d-flex justify-content-center">
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST">
                                     @csrf

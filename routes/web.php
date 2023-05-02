@@ -14,6 +14,8 @@ Auth::routes(['verify' => true]);
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/approval',  [HomeController::class, 'approval'])->name('approval');
+    Route::get('/user/{user_id}/resend-approval-notification', [Admin_UserController::class, 'resendApprovalNotification'])->name('user.resend_approval_notification');
+
 });
 
 Route::middleware(['approved'])->group(function () {
@@ -29,4 +31,5 @@ Route::prefix('admin')->middleware(['auth', 'isAdmin'])->group(function () {
     Route::delete('/delete_requests/{id}', [Admin_UserController::class, 'delete_requests'])->name('admin.delete_requests');
 
 });
+
 
