@@ -1,12 +1,12 @@
 @extends('admin.layouts.app')
 
 @section('content')
-    <div class="text-center"><a href="{{ route('admin.home_dashboard') }}">Back to Home Page</a></div>
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-12">
                 <div class="card">
-                    <div class="card-header">Pending Approval Requests</div>
+                    <div class="card-header text-danger"><span class="fas fa-exclamation-circle text-danger"></span> Pending
+                        Approval Requests</div>
 
                     <div class="card-body">
 
@@ -29,7 +29,7 @@
                                 <th>Name</th>
                                 <th>Email</th>
                                 <th>Registered at</th>
-                                <th></th>
+
                             </tr>
                             @forelse ($users as $user)
                                 <tr>
@@ -85,7 +85,7 @@
                                 </tr>
                             @empty
                                 <tr>
-                                    <td colspan="4">No users found.</td>
+                                    <td colspan="4">No approval requests found.</td>
                                 </tr>
                             @endforelse
                         </table>
@@ -94,6 +94,13 @@
             </div>
         </div>
     </div>
+
+    <style>
+        .container {
+            position: relative;
+            top: 30px;
+        }
+    </style>
 
     <script>
         setTimeout(function() {
