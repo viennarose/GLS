@@ -42,7 +42,7 @@ class NewUser extends Notification
         $registeredDate = $this->new_user->created_at->format('F d, Y H:i:s A');
 
         return (new MailMessage)
-            ->greeting('NEW USER HAS REGISTERED!')
+            ->greeting('Hello Admin, a new user has registered on your system.')
             ->line('Name: ' . $this->new_user->name)
             ->line('Email: ' . $this->new_user->email)
             ->line('Date Registered: ' . $registeredDate)

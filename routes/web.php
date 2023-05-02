@@ -23,8 +23,10 @@ Route::middleware(['approved'])->group(function () {
 
 Route::prefix('admin')->middleware(['auth', 'isAdmin'])->group(function () {
     Route::get('/dashboard', [Admin_HomeController::class, 'index'])->name('admin.home_dashboard');
+    Route::get('/files/index', [FileController::class, 'index'])->name('admin.files.index');
     Route::get('/pending_approval_requests', [Admin_UserController::class, 'index'])->name('admin.users.index');
     Route::get('/users/{user_id}/approve', [Admin_UserController::class, 'approve'])->name('admin.users.approve');
-    Route::get('/delete_requests/{id}', [Admin_UserController::class, 'delete_requests']);
-    Route::get('/files/index', [FileController::class, 'index'])->name('admin.files.index');
+    Route::delete('/delete_requests/{id}', [Admin_UserController::class, 'delete_requests'])->name('admin.delete_requests');
+
 });
+
