@@ -43,9 +43,10 @@
                                             role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                             <div class="modal-dialog" role="document">
                                                 <div class="modal-content">
-                                                    <form action="{{ url('delete_requests/' . $user->id) }}" method="GET">
+                                                    <form action="{{ route('admin.delete_requests', $user->id) }}"
+                                                        method="POST">
                                                         @csrf
-                                                        @method('GET')
+                                                        @method('DELETE')
                                                         <div class="modal-header">
                                                             <h5 class="modal-title" id="exampleModalLabel">Delete
                                                                 Confirmation</h5>

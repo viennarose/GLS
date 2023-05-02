@@ -35,7 +35,7 @@ class UserApprovedNotification extends Notification implements ShouldQueue
                     ->subject('Your account has been approved')
                     ->line('Your account has been approved by the admin.')
                     ->action('Go to Login', url('/login'))
-                    ->line('Thank you for using our application!');
+                    ->line('Thank you for using our system!');
     }
 }
 

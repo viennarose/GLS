@@ -28,9 +28,14 @@ class Admin_UserController extends Controller
     }
 
     public function delete_requests($id){
-        $user = User::findOrFail($id);
-        $user->delete();
 
-    return redirect()->route('admin.users.index')->with('delete_message', 'Request Deleted!');
+    if (!auth()->user()->admin) {
+        return redirect()->back()->with('error', 'You do not have permission to delete requests');
+    }
+    $user = User::findOrFail($id);
+    $user->delete();
+
+    return redirect()->back()->with('delete_message', 'Request Deleted');
+
     }
 }

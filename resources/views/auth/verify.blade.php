@@ -59,10 +59,6 @@
                             </form>
                         </div>
                         <div class="mr-2 mb-2 d-flex justify-content-end">
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST">
-                                @csrf
-                                <button type="submit" class="btn btn-login">Back to Login</button>
-                            </form>
                         </div>
                     </div>
                 </div>
@@ -99,16 +95,6 @@
 
         .card-header {
             color: red;
-        }
-
-        .btn-login {
-            color: white;
-            background-color: #565656;
-            font-size: 12px;
-        }
-
-        .btn-login:hover {
-            color: white;
         }
     </style>
 
