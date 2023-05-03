@@ -46,7 +46,7 @@
     }
 
     i {
-        margin-top: 5px;
+        margin-top: 6px;
         margin-left: -1px;
         color: gainsboro;
         font-size: 14px;
