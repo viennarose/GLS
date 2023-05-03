@@ -23,7 +23,7 @@
 
                         <table class="table text-center">
                             <tr>
-                              
+
                                 <th>Profile Image</th>
                                 <th>Name</th>
                                 <th>Email</th>
@@ -33,7 +33,7 @@
                             @forelse ($users as $user)
                                 <tr>
                                     <td><img src="https://cdn.onlinewebfonts.com/svg/img_81837.png" alt="Image"
-                                        style="border-radius: 50%; height: 50px; width: 50px;"></td>
+                                            style="border-radius: 50%; height: 50px; width: 50px;"></td>
                                     <td>{{ $user->name }}</td>
                                     <td>{{ $user->email }}</td>
                                     <td class="d-none d-md-table-cell d-lg-table-cell d-xl-table-cell"
@@ -70,7 +70,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </td> 
+                                    </td>
                                 </tr>
                             @empty
                                 <tr>
