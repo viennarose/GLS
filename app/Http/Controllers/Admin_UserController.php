@@ -15,7 +15,7 @@ class Admin_UserController extends Controller
     {
         $users = User::whereNull('approved_at')->get();
 
-        return view('admin.users', compact('users'));
+        return view('admin.unapprovedusers', compact('users'));
     }
 
     public function approve($user_id)
@@ -25,13 +25,13 @@ class Admin_UserController extends Controller
 
         $user->notify(new UserApprovedNotification());
         
-        return redirect()->route('admin.users.index')->with('success_message', 'Request Approved successfully');
+        return redirect()->route('admin.unapproved_users')->with('success_message', 'Request Approved successfully');
     }
 
     public function delete_requests($id){
 
     if (!auth()->user()->admin) {
-        return redirect()->back()->with('error', 'You do not have permission to delete requests');
+        return redirect()->back()->with('error', 'You do not have permission.');
     }
     $user = User::findOrFail($id);
     $user->delete();
@@ -53,6 +53,28 @@ class Admin_UserController extends Controller
 
     return redirect()->back()->with('success', 'Approval notification has been resent to the admin.');
 
-  }
+   }
 
+
+   //For Approved Users
+
+   public function approvedIndex(){
+    $users = User::whereNotNull('approved_at')
+    ->where('admin', '<>', 1)->get();
+
+    return view('admin.approvedusers', compact('users'));
+   }
+
+
+   public function delete_user($id){
+
+    if (!auth()->user()->admin) {
+        return redirect()->back()->with('error', 'You do not have permission.');
+    }
+    $user = User::findOrFail($id);
+    $user->delete();
+
+    return redirect()->back()->with('delete_message', 'User Deleted');
+
+    }
 }
