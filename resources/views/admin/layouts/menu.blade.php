@@ -15,8 +15,8 @@
 </li>
 
 <li class="nav-item">
-    <a href="{{ route('admin.unapproved_users') }}"
-        class="nav-link {{ Request::is('admin/files/index*') ? 'bg-secondary active' : '' }}">
+    <a href="{{ route('admin.files.index') }}"
+        class="nav-link {{ Request::is('admin/files*') ? 'bg-secondary active' : '' }}">
         <p class="text-white">EDICT Files</p>
         <i class="fas fa-file fa-pull-left fa-md text-white"></i>
     </a>
