@@ -113,7 +113,7 @@
                                             <div class="modal-dialog modal-md">
                                                 <div class="modal-content">
                                                     <div class="modal-header" style="background-color: #234495; color:white;">
-                                                        <h5 class="modal-title" id="updateFileLabel">Adding EDICTS</h5>
+                                                        <h5 class="modal-title" id="updateFileLabel">Updating EDICTS</h5>
                                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                     </div>
                                                     <div class="modal-body">
