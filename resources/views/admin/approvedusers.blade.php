@@ -1,12 +1,11 @@
-@extends('layouts.app')
+@extends('admin.layouts.app')
 
 @section('content')
-    <div class="text-center"><a href="{{ route('home') }}">Back to Home Page</a></div>
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-md-8">
+            <div class="col-md-12">
                 <div class="card">
-                    <div class="card-header">Pending Approval Requests</div>
+                    <div class="card-header text-dark text-center"><span class="fas fa-users text-dark"></span> Users</div>
 
                     <div class="card-body">
 
@@ -24,30 +23,36 @@
 
                         <table class="table text-center">
                             <tr>
-                                <th>Trash</th>
-                                <th>Email Verification Status</th>
+
+                                <th>Profile Image</th>
                                 <th>Name</th>
                                 <th>Email</th>
-                                <th>Registered at</th>
-                                <th></th>
+                                <th>Trash</th>
+
                             </tr>
                             @forelse ($users as $user)
                                 <tr>
+                                    <td><img src="https://cdn.onlinewebfonts.com/svg/img_81837.png" alt="Image"
+                                            style="border-radius: 50%; height: 50px; width: 50px;"></td>
+                                    <td>{{ $user->name }}</td>
+                                    <td>{{ $user->email }}</td>
                                     <td class="d-none d-md-table-cell d-lg-table-cell d-xl-table-cell"
                                         style="text-align: center">
-                                        <a href="#" data-toggle="modal" id="requests_delete_link" class="btn"
-                                            data-target="#delete_requests_id{{ $user->id }}">
+                                        <a href="#" data-toggle="modal" id="user_delete_link" class="btn"
+                                            data-target="#delete_user_id{{ $user->id }}">
                                             <span class="text-danger fas fa-trash-alt"></span>
                                         </a>
-                                        <div class="modal fade" id="delete_requests_id{{ $user->id }}" tabindex="-1"
+                                        <div class="modal fade" id="delete_user_id{{ $user->id }}" tabindex="-1"
                                             role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                             <div class="modal-dialog" role="document">
                                                 <div class="modal-content">
-                                                    <form action="{{ url('delete_requests/' . $user->id) }}" method="GET">
+                                                    <form action="{{ route('admin.delete_user', $user->id) }}"
+                                                        method="POST">
                                                         @csrf
-                                                        @method('GET')
+                                                        @method('DELETE')
                                                         <div class="modal-header">
-                                                            <h5 class="modal-title" id="exampleModalLabel">Delete
+                                                            <h5 class="modal-title text-danger" id="exampleModalLabel">
+                                                                Delete
                                                                 Confirmation</h5>
                                                             <button type="button" class="close" data-dismiss="modal"
                                                                 aria-label="Close">
@@ -55,32 +60,17 @@
                                                             </button>
                                                         </div>
                                                         <div class="modal-body">
-                                                            <p>Are you sure you want to delete this request?</p>
+                                                            <p class="text-dark">Are you sure you want to delete this
+                                                                user?</p>
                                                         </div>
                                                         <div class="modal-footer">
-                                                            <button type="button" class="btn btn-secondary"
-                                                                data-dismiss="modal">Cancel</button>
-                                                            <button type="submit" class="btn btn-danger">Delete</button>
+                                                            <button type="submit" class="btn btn-danger">Confirm</button>
                                                         </div>
                                                     </form>
                                                 </div>
                                             </div>
                                         </div>
                                     </td>
-
-                                    <td>
-                                        @if ($user->email_verified_at)
-                                            <span class="text-success"><i class="fas fa-check"></i> Verified</span>
-                                        @else
-                                            <span class="text-danger"><i class="fas fa-exclamation-circle"></i> Not
-                                                Verified</span>
-                                        @endif
-                                    </td>
-                                    <td>{{ $user->name }}</td>
-                                    <td>{{ $user->email }}</td>
-                                    <td>{{ $user->created_at->format('F d, Y \a\t h:i A') }}</td>
-                                    <td><a href="{{ route('admin.users.approve', $user->id) }}"
-                                            class="btn btn-primary btn-sm">Approve ?</a></td>
                                 </tr>
                             @empty
                                 <tr>
@@ -93,6 +83,13 @@
             </div>
         </div>
     </div>
+
+    <style>
+        .container {
+            position: relative;
+            top: 30px;
+        }
+    </style>
 
     <script>
         setTimeout(function() {

@@ -4,14 +4,18 @@
             <div class="col-md-10">
                 <input type="search" wire:model="search" class="form-control input mb-3" placeholder="Search">
                 <div class="card">
-                    <div class="text-center"><a href="{{ route('home') }}">Back to Home Page</a></div>
+                    @if(auth()->check() && (auth()->user()->admin == true))
+                    <div class="text-center"><a href="{{ route('admin.home_dashboard') }}">Back to Dashboard</a></div>
+                    @else
+                    <div class="text-center"><a href="{{ route('home') }}">Back to Home</a></div>
+                    @endif
                     <div class="card-header text-center">EDICTS</div>
                     @if(auth()->check() && (auth()->user()->admin == true))
                     <button type="button" class="btn" style="background-color: #343a40; color:white;"
                         data-toggle="modal" data-target="#exampleModal">
                         <span class="fas fa-plus-circle"></span> Add
                     </button>
-                    @endif
+                  @endif
                     <div wire:ignore.self class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
                         aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-md">

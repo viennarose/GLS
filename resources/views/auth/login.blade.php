@@ -26,27 +26,29 @@
             integrity="sha512-8vq2g5nHE062j3xor4XxPeZiPjmRDh6wlufQlfC6pdQ/9urJkU07NM0tEREeymP++NczacJ/Q59ul+/K2eYvcg=="
             crossorigin="anonymous" />
 
-        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-        <!--[if lt IE 9]>
-                                                                <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-                                                                <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-                                                                <![endif]-->
+        <!-- Include pull-to-refresh.js library -->
+        <script src="https://cdn.jsdelivr.net/npm/pulltorefreshjs@0.1.15/dist/pulltorefresh.min.js"></script>
+
     </head>
 
     <body>
-        <div class="container" style="position:relative; top: -50px;">
+
+        <!-- Add pull-to-refresh indicator -->
+        <div id="ptr-element"></div>
+
+        <div class="container">
             <div class="wrapper">
                 <div style="display: flex; justify-content: center;">
-                    <img src="img/logo.png" alt="" style="height: 120px; width: 120px; margin-top:10px;">
+                    <img src="img/SC_BWgoldBlue.png" alt="">
                 </div>
 
-                <p style="text-align: center; font-weight: 600; color:rgb(77, 77, 77)">GUILD OF LODGE SECRETARIES</p>
+                <p class="title1">THE REGIUS AND COOKE</p>
+                <p class="title2">(Increasing the Power of the Hands)</p>
 
                 <form method="POST" action="{{ route('login') }}">
                     @csrf
 
-                    <div class="row" style="margin-bottom: 20px;">
+                    <div class="row" style="margin-bottom: 20px; margin-top: -30px;">
                         <i class="fas fa-envelope"></i>
                         <input id="email" type="email" class="form-control @error('email') is-invalid @enderror"
                             name="email" placeholder="Email Address" value="{{ old('email') }}" required
@@ -72,8 +74,7 @@
 
                     </div>
 
-                    <label for="show-password-checkbox"
-                        style="display: flex; align-items: center; font-weight: 400; font-size: 13px; color:#716e6e;">
+                    <label for="show-password-checkbox" class="show_pass">
                         <input type="checkbox" id="show-password-checkbox" style="margin-right: 5px;">
                         Show password
                     </label>
@@ -101,8 +102,12 @@
         }
 
         body {
-            background: #e1e1e1;
+            background-color: #565656;
             overflow: hidden;
+            background-image: url("img/Plaridel.jpg");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
         }
 
         ::selection {
@@ -113,6 +118,8 @@
             max-width: 440px;
             padding: 0 20px;
             margin: 100px auto;
+            position: relative;
+            top: -50px;
         }
 
         .wrapper {
@@ -145,8 +152,8 @@
         }
 
         form .row input:focus {
-            border-color: #273094;
-            box-shadow: inset 0px 0px 2px 2px rgba(26, 188, 156, 0.25);
+            border-color: #565656;
+
         }
 
         form .row input::placeholder {
@@ -159,8 +166,8 @@
             height: 100%;
             color: #fff;
             font-size: 18px;
-            background: #273094;
-            border: 1px solid #273094;
+            background: #565656;
+            border: 1px solid #565656;
             border-radius: 5px 0 0 5px;
             display: flex;
             align-items: center;
@@ -188,7 +195,7 @@
             font-size: 20px;
             font-weight: 500;
             padding-left: 0px;
-            background: #273094;
+            background: #565656;
             border: none;
             cursor: pointer;
         }
@@ -211,6 +218,43 @@
         form .signup-link a:hover {
             text-decoration: underline;
         }
+
+        #ptr-element {
+            text-align: center;
+            font-size: 16px;
+            color: #273094;
+            padding: 10px;
+            margin-top: -20px;
+        }
+
+        .title1 {
+            text-align: center;
+            font-weight: 600;
+            color: rgb(77, 77, 77);
+            font-size: 18px;
+        }
+
+        .title2 {
+            text-align: center;
+            font-weight: 500;
+            color: rgb(77, 77, 77);
+            margin-top: -20px;
+            font-size: 15px;
+        }
+
+        img {
+            height: 120px;
+            width: 120px;
+            margin-top: 10px;
+        }
+
+        .show_pass {
+            display: flex;
+            align-items: center;
+            font-weight: normal;
+            font-size: 13px;
+            color: #716e6e;
+        }
     </style>
 
     <script>
@@ -222,6 +266,13 @@
                 passwordInput.type = 'text';
             } else {
                 passwordInput.type = 'password';
+            }
+        });
+
+        var ptr = PullToRefresh.init({
+            mainElement: 'body',
+            onRefresh: function() {
+                location.reload();
             }
         });
     </script>

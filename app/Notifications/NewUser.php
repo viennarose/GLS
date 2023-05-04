@@ -35,14 +35,17 @@ class NewUser extends Notification
      * @param  mixed  $notifiable
      * @return \Illuminate\Notifications\Messages\MailMessage
      */
+    
+
     public function toMail($notifiable)
     {
+        $registeredDate = $this->new_user->created_at->format('F d, Y H:i:s A');
+
         return (new MailMessage)
-            ->greeting('New user has registered!')
+            ->greeting('Hello Admin, a new user has registered on your system.')
             ->line('Name: ' . $this->new_user->name)
             ->line('Email: ' . $this->new_user->email)
+            ->line('Date Registered: ' . $registeredDate)
             ->action('Approve', route('admin.users.approve', $this->new_user->id));
     }
-
-   
 }
