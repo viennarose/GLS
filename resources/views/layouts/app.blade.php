@@ -35,11 +35,11 @@
             <div class="container">
                 @if(auth()->check() && (auth()->user()->admin == true))
                 <a class="navbar-brand" href="{{ route('admin.home_dashboard') }}">
-                    {{ config('app.name', 'Laravel') }}
+                    {{ config('app.name', 'GLS') }}
                 </a>
                 @else
                 <a class="navbar-brand" href="{{ route('home') }}">
-                    {{ config('app.name', 'Laravel') }}
+                    {{ config('app.name', 'GLS') }}
                 </a>
                 @endif
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
