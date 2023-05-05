@@ -8,7 +8,7 @@ use Livewire\Component;
 
 class Index extends Component
 {
-    
+
     public $description, $date, $hashtag, $link;
     public $search;
     public function AddFile(){

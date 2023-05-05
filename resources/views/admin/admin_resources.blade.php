@@ -1,5 +1,6 @@
 @extends('admin.layouts.app')
 
 @section('content')
-    {{-- <livewire:admin.files.index> --}}
+Hii
+    <livewire:admin.resources>
 @endsection

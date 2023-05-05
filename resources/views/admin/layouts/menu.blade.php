@@ -21,6 +21,13 @@
         <i class="fas fa-file fa-pull-left fa-md text-white"></i>
     </a>
 </li>
+<li class="nav-item">
+    <a href="{{ route('admin.resources') }}"
+        class="nav-link {{ Request::is('admin/resources*') ? 'bg-secondary active' : '' }}">
+        <p class="text-white">RESOURCES</p>
+        <i class="fas fa-file fa-pull-left fa-md text-white"></i>
+    </a>
+</li>
 
 <li class="nav-item">
     <a href="{{ route('admin.approved_users') }}"
