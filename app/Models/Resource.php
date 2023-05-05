@@ -20,4 +20,8 @@ class Resource extends Model
             $query->where('title', 'like', $term);
         });
     }
+
+    public function files(){
+        return $this->hasMany('App\Models\File');
+    }
 }

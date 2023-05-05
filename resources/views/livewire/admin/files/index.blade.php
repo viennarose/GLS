@@ -4,37 +4,44 @@
             <div class="col-md-12">
                 <input type="search" wire:model="search" class="form-control input mb-3 mt-3" placeholder="Search">
                 <div class="card">
-                    {{-- @if(auth()->check() && (auth()->user()->admin == true))
-                    <div class="text-center"><a href="{{ route('admin.home_dashboard') }}">Back to Dashboard</a></div>
-                    @else
-                    <div class="text-center"><a href="{{ route('home') }}">Back to Home</a></div>
-                    @endif --}}
-                    <div class="card-header text-center">EDICTS</div>
-                    @if(auth()->check() && (auth()->user()->admin == true))
+                    <div class="card-header text-center">FILES</div>
                     <button type="button" class="btn" style="background-color: #343a40; color:white;"
                         data-toggle="modal" data-target="#exampleModal">
                         <span class="fas fa-plus-circle"></span> Add
                     </button>
-                  @endif
                     <div wire:ignore.self class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
                         aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-md">
                             <div class="modal-content">
                                 <div class="modal-header" style="background-color: #234495; color:white;">
-                                    <h5 class="modal-title" id="exampleModalLabel">Adding EDICTS</h5>
+                                    <h5 class="modal-title" id="exampleModalLabel">Adding FILES</h5>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
                                 </div>
                                 <div class="modal-body text-center">
                                     <form wire:submit.prevent="AddFile()">
-                                        @csrf
+
                                         <div class="container mx-auto">
                                             <div class="col-md-12">
                                                 <div class="form-group">
                                                     <label for="" style="color:dimgray">Title</label>
                                                     <input type="text" class="form-control" wire:model='title'
                                                         required>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label for="" style="color:dimgray">Resources</label>
+                                                    <select wire:model="resource_id" id="resource_id" class="form-control"
+                                                style="color:dimgray;" required>
+                                                <option selected>Select Resources</option>
+                                                @foreach ($resources as $rsrc)
+                                                    <option value="{{ $rsrc->id }}">
+                                                        {{ $rsrc->title }}
+                                                    </option>
+                                                @endforeach
+                                            </select>
                                                 </div>
                                             </div>
                                             <div class="col-md-12">

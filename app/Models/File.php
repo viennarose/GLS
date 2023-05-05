@@ -21,4 +21,7 @@ class File extends Model
                 ->orWhere('link', 'like', $term);
         });
     }
+    public function resource(){
+        return $this->belongsTo('App\Models\Resource');
+    }
 }
