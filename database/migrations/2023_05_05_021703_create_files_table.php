@@ -13,14 +13,18 @@ return new class extends Migration
     {
         Schema::create('files', function (Blueprint $table) {
             $table->id();
-            $table->string('category')->nullable();
+            $table->unsignedBigInteger('resource_id');
+            $table->string('title')->nullable();
             $table->string('description')->nullable();
             $table->string('date')->nullable();
             $table->string('link')->nullable();
             $table->string('hashtag')->nullable();
             $table->string('sponsors')->nullable();
             $table->timestamps();
+            $table->foreign('resource_id')->references('id')->on('resources')
+            ->onUpdate('cascade');
         });
+
     }
 
     /**
