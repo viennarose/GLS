@@ -16,14 +16,14 @@
                             <span class="error text-danger">{{ $message }}</span>
                         @enderror
                     </div>
-                    <div class="form-group" style="margin-top:-10px;">
-                        <Label>Year</Label>
+                    <div class="form-group text-center d-flex justify-content-center" style="margin-top:10px;">
+                        <Label class="text-secondary">Year &nbsp;</Label>
                         <input type="number" style="width: 200px; margin-top: -10px;"  class="form-control" wire:model="year" id="year" min="1900" max="{{ date('Y') }}"
                             step="1" value="{{ date('Y') }}">
                     </div>
                 </div>
                 <div class="card">
-                    <div class="card-header text-center">FILES</div>
+                    <div class="card-header text-center"><span class="fas fa-envelope"></span> FILES</div>
                     <button type="button" class="btn" style="background-color: #343a40; color:white;"
                         data-toggle="modal" data-target="#exampleModal">
                         <span class="fas fa-plus-circle"></span> Add
@@ -66,8 +66,8 @@
                                             <div class="col-md-12">
                                                 <div class="form-group">
                                                     <label for="" style="color:dimgray">Description</label>
-                                                    <input type="text" class="form-control" wire:model='description'
-                                                        required>
+                                                    <textarea type="text" class="form-control" rows="5" wire:model='description'
+                                                        required></textarea>
                                                 </div>
                                             </div>
                                             <div class="col-md-12">
@@ -116,7 +116,7 @@
                             </div>
                         @endif
 
-                        <table class="table text-center">
+                        <table class="table text-center table-bordered">
                             <tr>
                                 <th>Title</th>
                                 <th scope="col" class="d-none d-md-table-cell d-lg-table-cell d-xl-table-cell">Date</th>
@@ -130,7 +130,7 @@
                             @forelse ($files as $file)
                                 <tr>
 
-                                    <td>{{ $file->title }}</td>
+                                    <td class="text-wrap">{{ $file->title }}</td>
                                     <td scope="col" class="d-none d-md-table-cell d-lg-table-cell d-xl-table-cell">{{ $file->date }}</td>
                                     <td><a href="{{ $file->link }}">Link</a>
                                     </td>
@@ -152,7 +152,7 @@
                                                             <span aria-hidden="true">&times;</span>
                                                         </button>
                                                     </div>
-                                                    <div class="modal-body">
+                                                    <div class="modal-body" style="text-align: start;">
                                                         <form>
                                                             @csrf
                                                             <div class="container">
@@ -187,8 +187,8 @@
                                                                     <div class="form-group">
                                                                         <label for=""
                                                                             style="color:dimgray">Description</label>
-                                                                        <input type="text" class="form-control"
-                                                                            wire:model='description' required>
+                                                                        <textarea type="text" class="form-control" rows="5"
+                                                                            wire:model='description' required></textarea>
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-md-12">
@@ -221,7 +221,7 @@
                                                             <div class="modal-footer">
                                                                 <button wire:click.prevent="updateFile()"
                                                                     class="btn btn-success">
-                                                                    <span class="fas fa-save"></span> Submit
+                                                                    <span class="fas fa-save"></span> Save Changes
                                                                 </button>
                                                             </div>
                                                         </form>

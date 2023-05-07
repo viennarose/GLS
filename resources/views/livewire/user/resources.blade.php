@@ -34,3 +34,6 @@
         @endforelse
     </div>
 </div>
+
+
+<p class="text-center" style="font-size: 30px;">On Progress</p>
