@@ -9,7 +9,7 @@
             <div class="card mb-4 elevation-3">
                 <div class="card-body text-center">
                     <i class="fas fa-exclamation-circle mb-2" style="font-size:24px;"></i>
-                    <h5 class="card-title mb-0 text-dark">0</h5>
+                    <h5 class="card-title mb-0 text-dark">{{$pending_requests}}</h5>
                     <p class="card-text text-muted">Approval Requests</p>
                 </div>
             </div>
@@ -21,7 +21,7 @@
             <div class="card mb-4 elevation-3">
                 <div class="card-body text-center">
                     <i class="fas fa-users mb-2" style="font-size:24px;"></i>
-                    <h5 class="card-title mb-0 text-dark">0</h5>
+                    <h5 class="card-title mb-0 text-dark">{{$users}}</h5>
                     <p class="card-text text-muted">Total Users</p>
                 </div>
             </div>
@@ -32,7 +32,7 @@
             <div class="card mb-4 elevation-3">
                 <div class="card-body text-center">
                     <i class="fas fa-envelope mb-2" style="font-size:24px;"></i>
-                    <h5 class="card-title mb-0 text-dark">0</h5>
+                    <h5 class="card-title mb-0 text-dark">{{$files}}</h5>
                     <p class="card-text text-muted">Files</p>
                 </div>
             </div>
@@ -43,7 +43,7 @@
             <div class="card mb-4 elevation-3">
                 <div class="card-body text-center">
                     <i class="fas fa-chart-bar mb-2" style="font-size:24px;"></i>
-                    <h5 class="card-title mb-0 text-dark">0</h5>
+                    <h5 class="card-title mb-0 text-dark">{{$resources}}</h5>
                     <p class="card-text text-muted">Resources</p>
                 </div>
             </div>
