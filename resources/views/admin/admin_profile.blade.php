@@ -34,7 +34,6 @@ Profile</h1>
 
             </div>
             <div class="col-md-6 mt-3">
-
                 <div class="modal-body">
 
                     <div class="mb-5">
