@@ -15,6 +15,7 @@ class Admin_HomeController extends Controller
             $files = DB::table('files')->count();
             $resources = DB::table('resources')->count();
 
+
         return view('admin.admin_home', compact('pending_requests', 'users', 'files', 'resources'));
     }
 }
