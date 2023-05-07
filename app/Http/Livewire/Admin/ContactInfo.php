@@ -8,12 +8,8 @@ use Livewire\Component;
 class ContactInfo extends Component
 {
     public $name, $address, $number, $email;
-    public $message;
+    public $contacts;
 
-
-    public function mount(){
-        $this->name = $this->name;
-    }
     public function render()
     {
         $contacts = Contact::get();
