@@ -54,14 +54,14 @@
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item dropdown user-menu">
                     <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
-                        <img src="https://cdn.onlinewebfonts.com/svg/img_81837.png"
+                        <img src="/user_img/user_icon.png"
                             class="user-image img-circle elevation-2" alt="User Image">
                         <span class="d-none d-md-inline">{{ Auth::user()->name }}</span>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
                         <!-- User image -->
                         <li class="user-header bg-dark">
-                            <img src="https://cdn.onlinewebfonts.com/svg/img_81837.png" class="img-circle elevation-2"
+                            <img src="/user_img/user_icon.png" class="img-circle elevation-2"
                                 alt="User Image">
                             <p>
                                 {{ Auth::user()->name }}

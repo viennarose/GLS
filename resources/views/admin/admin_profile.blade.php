@@ -11,8 +11,8 @@
 <h1 class="text-center">{{ Auth::user()->name }}
 Profile</h1>
 <hr>
-<div class="container">
-<div class="col-md-12">
+ <div class="container">
+   <div class="col-md-12">
     <form action="{{ url('/update-profile/' . Auth::user()->id) }}" method="POST" enctype="multipart/form-data">
         @csrf
         @method('PUT')
@@ -20,7 +20,7 @@ Profile</h1>
             <div class="col-md-6">
                 <div class="mx-auto">
                     <div class="d-flex justify-content-center mt-5">
-                        <img src={{ '/user_profile_images/' . Auth::user()->profile_image }}
+                        <img src={{ '/user_img/' . Auth::user()->profile_image}}
                             class="img-circle elevation-4" alt="User Image"
                             style="height: 300px; width: 300px; border-radius: 50%; padding-top:10px; padding-bottom: 10px; padding-left: 10px; padding-right: 10px;">
                     </div>
@@ -82,6 +82,5 @@ setTimeout(function() {
     $(' .alert-dismissible').fadeOut('slow');
 }, 1000);
 </script>
-
 
 @endsection

@@ -40,6 +40,7 @@
                 </a>
                 @else
                 <a class="navbar-brand" href="{{ route('home') }}">
+                    <img src="/img/SC_BWgoldBlue.png"  style="height: 35px; margin-right: 10px;" alt="">
                     {{ config('app.name', 'GLS') }}
                 </a>
                 @endif
@@ -72,9 +73,11 @@
                             @endif
                         @else
                             <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
-                                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }}
+                                <a d="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    <img src="/user_img/user_icon.png" style="height: 30px; width: 30px;"
+                                        class="user-image img-circle elevation-2" alt="User Image">
+                                    <span class="d-none d-md-inline">{{ Auth::user()->name }}</span>
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
