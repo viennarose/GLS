@@ -3,6 +3,8 @@
 @section('content')
     <p class="text-dark dash">Dashboard</p>
 
+    <a href="{{route('home')}}" class="d-flex justify-content-end mr-2 text-dark mb-1" style="margin-top: -20px; font-size: 13px;"><span class="fas fa-sign-out-alt" style="margin-top: 3px;"> </span>&nbsp;Go to User Page</a>
+
     <div class="row">
         <div class="col-sm-6 col-lg-3">
         <a href="{{route('admin.unapproved_users')}}">
