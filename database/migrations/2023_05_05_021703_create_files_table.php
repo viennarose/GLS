@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('resource_id');
             $table->string('title')->nullable();
-            $table->string('description')->nullable();
+            $table->longText('description')->nullable();
             $table->string('date')->nullable();
             $table->longText('link')->nullable();
             $table->string('hashtag')->nullable();

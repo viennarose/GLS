@@ -5,7 +5,7 @@
                 <input type="search" wire:model="search" class="form-control input mb-3 mt-3" placeholder="Search">
                 <div class="card">
 
-                    <div class="card-header text-center">RESOURCES</div>
+                    <div class="card-header text-center"><span class="fas fa-chart-bar"></span> RESOURCES</div>
 
                     <button type="button" class="btn" style="background-color: #343a40; color:white;"
                         data-toggle="modal" data-target="#exampleModal">
@@ -61,7 +61,7 @@
                             </div>
                         @endif
 
-                        <table class="table text-center">
+                        <table class="table text-center table-bordered">
                             <tr>
                                 <th>Title</th>
                                 @if (auth()->check() && auth()->user()->admin == true)
@@ -89,10 +89,10 @@
                                                             <span aria-hidden="true">&times;</span>
                                                         </button>
                                                     </div>
-                                                    <div class="modal-body text-center">
+                                                    <div class="modal-body">
                                                         <form>
                                                             @csrf
-                                                            <div class="container mx-auto">
+                                                            <div class="container">
                                                                 <div class="col-md-12">
                                                                     <div class="form-group">
                                                                         <label for="title"
@@ -110,7 +110,7 @@
                                                             <div class="modal-footer">
                                                                 <button wire:click.prevent="updateResources()"
                                                                     class="btn btn-success">
-                                                                    <span class="fas fa-save"></span> Submit
+                                                                    <span class="fas fa-save"></span> Save Changes
                                                                 </button>
                                                             </div>
                                                         </form>

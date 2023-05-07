@@ -19,16 +19,7 @@ class AdminSeeder extends Seeder
 
         $data = [
             [
-            'id' => 1,
-            'name' => 'Administrator',
-            'email' => 'viennapepito01@gmail.com',
-            'email_verified_at' => now(),
-            'password' => bcrypt('vienna12345'),
-            'admin' => 1,
-            'approved_at' => now(),
-            ],
-            [
-                'id' => 2,
+                'id' => 1,
                 'name' => 'Administrator',
                 'email' => 'gls.glp418@gmail.com',
                 'email_verified_at' => now(),
@@ -36,6 +27,16 @@ class AdminSeeder extends Seeder
                 'admin' => 1,
                 'approved_at' => now(),
                 ],
+            [
+                'id' => 2,
+                'name' => 'Administrator',
+                'email' => 'viennapepito01@gmail.com',
+                'email_verified_at' => now(),
+                'password' => bcrypt('vienna12345'),
+                'admin' => 1,
+                'approved_at' => now(),
+            ],
+
             ];
             User::insert($data);
 
