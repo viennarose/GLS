@@ -9,18 +9,18 @@ class Resources extends Component
 {
     public $title;
     public $search;
-    public function AddResources(){
+    public function addResources()
+{
+    $this->validate([
+        'title' => ['string', 'required']
+    ]);
 
-        $this->validate([
-            'title' => ['string', 'required']]);
+    Resource::create([
+        'title' => $this->title
+    ]);
 
-        Resource::create([
-            'title' => $this->title
-        ]);
-
-            return redirect()->route('admin.resources')->with('message', 'Created Successfully');
-    }
-
+    return redirect('/admin/resources')->with('message', 'Created Successfully');
+}
     public function editResources(int $resources_id){
         $resources = Resource::find($resources_id);
         if($resources){
@@ -28,7 +28,7 @@ class Resources extends Component
             $this->title = $resources->title;
 
         }else{
-            return redirect()->route('admin.resources');
+            return redirect('admin/resources');
         }
 
     }
@@ -43,7 +43,7 @@ class Resources extends Component
 
         Resource::where('id',$this->resources_id)
                     ->update(['title' => $this->title]);
-        return redirect()->route('admin.resources')->with('message', 'Updated Successfully');
+        return redirect('admin/resources')->with('message', 'Updated Successfully');
 
     }
 
@@ -56,7 +56,7 @@ class Resources extends Component
     {
 
         Resource::find($this->resources_id)->delete();
-        return redirect()->route('admin.resources')->with('message', 'Deleted Successfully');
+        return redirect('admin/resources')->with('message', 'Deleted Successfully');
 
     }
 
@@ -64,7 +64,6 @@ class Resources extends Component
 
         $query = Resource::orderBy('title', 'asc')
             ->search($this->search);
-
 
         $resources = $query->paginate(6);
         return compact('resources');

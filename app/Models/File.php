@@ -16,6 +16,7 @@ class File extends Model
             $term = '%'. $term . '%';
 
             $query->where('description', 'like', $term)
+                ->orWhere('title', 'like', $term)
                 ->orWhere('date', 'like', $term)
                 ->orWhere('hashtag', 'like', $term)
                 ->orWhere('link', 'like', $term);

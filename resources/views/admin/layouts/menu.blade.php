@@ -22,9 +22,23 @@
 </li>
 
 <li class="nav-item">
-    <a href="{{ route('admin.resources') }}"
+    <a href="{{ url('admin/resources') }}"
         class="nav-link {{ Request::is('admin/resources*') ? 'bg-secondary active' : '' }}">
         <p class="text-white">Resources</p>
+        <i class="fas fa-chart-bar fa-pull-left fa-md text-white"></i>
+    </a>
+</li>
+<li class="nav-item">
+    <a href="{{ url('admin/contact') }}"
+        class="nav-link {{ Request::is('admin/contact*') ? 'bg-secondary active' : '' }}">
+        <p class="text-white">Contact</p>
+        <i class="fas fa-chart-bar fa-pull-left fa-md text-white"></i>
+    </a>
+</li>
+<li class="nav-item">
+    <a href="{{ url('admin/about') }}"
+        class="nav-link {{ Request::is('admin/about*') ? 'bg-secondary active' : '' }}">
+        <p class="text-white">About</p>
         <i class="fas fa-chart-bar fa-pull-left fa-md text-white"></i>
     </a>
 </li>

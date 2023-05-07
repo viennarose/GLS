@@ -39,7 +39,7 @@
          </a>
         </div>
         <div class="col-sm-6 col-lg-3">
-        <a href="{{route('admin.resources')}}">
+        <a href="{{ url('admin/resources')}}">
             <div class="card mb-4 elevation-3">
                 <div class="card-body text-center">
                     <i class="fas fa-chart-bar mb-2" style="font-size:24px;"></i>
