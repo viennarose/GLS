@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FileController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ContactInformationController;
+use App\Http\Controllers\AboutUsController;
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ProfileController;
@@ -30,6 +32,9 @@ Route::middleware(['auth','approved'])->group(function () {
     Route::get('/home', [HomeController::class, 'index'])->name('home');
     // Route::get('/files', [FileController::class, 'index'])->name('files.index');
     Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
+    Route::get('/contact_information', [ContactInformationController::class, 'index'])->name('contact_information');
+    Route::get('/about_us', [AboutUsController::class, 'index'])->name('about_us');
+
 
 });
 

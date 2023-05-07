@@ -33,17 +33,11 @@
     <div id="app">
         <nav class="navbar navbar-expand-xl text-dark bg-light shadow-sm fixed-top">
             <div class="container">
-                @if(auth()->check() && (auth()->user()->admin == true))
-                <a class="navbar-brand" href="{{ route('admin.home_dashboard') }}">
-                    <img src="/img/SC_BWgoldBlue.png"  style="height: 35px; margin-right: 10px;" alt="">
-                    {{ config('app.name', 'GLS') }}
-                </a>
-                @else
+
                 <a class="navbar-brand" href="{{ route('home') }}">
                     <img src="/img/SC_BWgoldBlue.png"  style="height: 35px; margin-right: 10px;" alt="">
                     {{ config('app.name', 'GLS') }}
                 </a>
-                @endif
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -60,12 +54,18 @@
                     <ul class="navbar-nav ms-auto">
                         <!-- Authentication Links -->
 
+                        @if(auth()->check() && (auth()->user()->admin == true))
                         <li class="nav-item mt-1">
-                            <a class="nav-link text-dark" href="{{ url('/home') }}"> &nbsp;Home</a>
+                            <a class="nav-link text-dark" href="{{route('admin.home_dashboard')}}"><span class="fas fa-sign-out-alt"></span> Back to Admin Page &nbsp;&nbsp;</a>
+
+                        </li>
+                        @endif
+                        <li class="nav-item mt-1">
+                            <a class="nav-link text-dark" href="{{ route('home') }}"> &nbsp;Home</a>
                         </li>
 
                         <li class="nav-item mt-1">
-                            <a class="nav-link text-dark" href="{{ url('/contact_information') }}"> &nbsp;Contact Information</a>
+                            <a class="nav-link text-dark" href="{{ route('contact_information') }}"> &nbsp;Contact Information</a>
                         </li>
 
                         <li class="nav-item mt-1">
