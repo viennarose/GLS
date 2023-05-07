@@ -31,7 +31,7 @@
 
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+        <nav class="navbar navbar-expand-xl text-dark bg-light shadow-sm fixed-top">
             <div class="container">
                 @if(auth()->check() && (auth()->user()->admin == true))
                 <a class="navbar-brand" href="{{ route('admin.home_dashboard') }}">
@@ -59,6 +59,19 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
                         <!-- Authentication Links -->
+
+                        <li class="nav-item mt-1">
+                            <a class="nav-link text-dark" href="{{ url('/home') }}"> &nbsp;Home</a>
+                        </li>
+
+                        <li class="nav-item mt-1">
+                            <a class="nav-link text-dark" href="{{ url('/contact_information') }}"> &nbsp;Contact Information</a>
+                        </li>
+
+                        <li class="nav-item mt-1">
+                            <a class="nav-link text-dark" href="{{ url('/about_us') }}"> &nbsp;About Us</a>
+                        </li>
+
                         @guest
                             @if (Route::has('login'))
                                 <li class="nav-item">
@@ -77,16 +90,17 @@
                                 data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     <img src="/user_img/user_icon.png" style="height: 30px; width: 30px;"
                                         class="user-image img-circle elevation-2" alt="User Image">
-                                    <span class="d-none d-md-inline">{{ Auth::user()->name }}</span>
                                 </a>
 
-                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{route('profile')}}">Profile</a>
+                                <div class="dropdown-menu dropdown-menu-end text-center" aria-labelledby="navbarDropdown">
+                                    <span class="text-center">{{ Auth::user()->name }}</span>
+                                    <hr>
+                                    <a class="dropdown-item" href="{{route('profile')}}"><span class="fas fa-user"></span> Profile</a>
 
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
+                                       <span class="fas fa-sign-out-alt"></span> {{ __('Logout') }}
                                     </a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
