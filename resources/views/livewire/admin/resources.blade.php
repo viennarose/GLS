@@ -15,8 +15,8 @@
                         aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-md">
                             <div class="modal-content">
-                                <div class="modal-header" style="background-color: #234495; color:white;">
-                                    <h5 class="modal-title" id="exampleModalLabel">Adding RESOURCES</h5>
+                                <div class="modal-header text-dark">
+                                    <h5 class="modal-title" id="exampleModalLabel">Adding Resources</h5>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
@@ -63,30 +63,26 @@
 
                         <table class="table text-center">
                             <tr>
-                                <th>ID</th>
-                                <th>TITLE</th>
+                                <th>Title</th>
                                 @if (auth()->check() && auth()->user()->admin == true)
                                     <th>Edit/Delete</th>
                                 @endif
                             </tr>
                             @forelse ($resources as $resource)
                                 <tr>
-
-                                    <td>{{ $resource->id }}</td>
                                     <td>{{ $resource->title }}</td>
 
                                     <td>
-                                        <button type="button" class="btn bg-success" data-toggle="modal"
+                                        <button type="button" class="btn m-1" data-toggle="modal"
                                             data-target="#updateModal" wire:click="editResources({{ $resource->id }})">
-                                            Edit
+                                            <span class="fas fa-edit text-warning"></span>
                                         </button>
                                         <div wire:ignore.self class="modal fade" id="updateModal" tabindex="-1"
                                             role="dialog" aria-labelledby="updateModalLabel" aria-hidden="true">
                                             <div class="modal-dialog modal-md">
                                                 <div class="modal-content">
-                                                    <div class="modal-header"
-                                                        style="background-color: #234495; color:white;">
-                                                        <h5 class="modal-title" id="updateModalLabel">Updating RESOURCES
+                                                    <div class="modal-header text-dark">
+                                                        <h5 class="modal-title" id="updateModalLabel">Updating Resources
                                                         </h5>
                                                         <button type="button" class="close" data-dismiss="modal"
                                                             aria-label="Close">
@@ -122,23 +118,27 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <button type="button" class="btn bg-danger" data-toggle="modal"
+                                        <button type="button" class="btn" data-toggle="modal"
                                             data-target="#deleteModal"
                                             wire:click="deleteResources({{ $resource->id }})">
-                                            Delete
+                                            <span class="fas fa-trash-alt text-danger"></span>
                                         </button>
                                         <div wire:ignore.self class="modal fade" id="deleteModal" tabindex="-1"
                                             role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
                                             <div class="modal-dialog modal-md">
                                                 <div class="modal-content">
-                                                    <div class="modal-header bg-danger">
-                                                        <h5 class="modal-title" id="deleteModalLabel">Are you sure to
-                                                            delete this?
-                                                        </h5>
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title text-danger" id="exampleModalLabel">
+                                                            Delete
+                                                            Confirmation</h5>
                                                         <button type="button" class="close" data-dismiss="modal"
                                                             aria-label="Close">
                                                             <span aria-hidden="true">&times;</span>
                                                         </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <p class="text-dark">Are you sure you want to delete this
+                                                            resource?</p>
                                                     </div>
                                                     <div class="modal-body text-center">
                                                         <form>
@@ -147,7 +147,7 @@
                                                             <div class="modal-footer">
                                                                 <button wire:click.prevent="destroyResources()"
                                                                     class="btn btn-danger">
-                                                                    <span class="fas fa-save"></span> Delete
+                                                                    Confirm
                                                                 </button>
                                                             </div>
                                                         </form>

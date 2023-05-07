@@ -5,7 +5,7 @@
                 <input type="search" wire:model="search" class="form-control input mb-3 mt-3" placeholder="Search">
                 <div class="col-md-12">
                     <div class="form-group">
-                        <select class="form-select" wire:model="byResource">
+                        <select class="form-control" style="width: 230px;" wire:model="byResource">
                             <option selected value="all">Filter Resources</option>
                             @foreach ($resources as $resource)
                                 <option value="{{ $resource->id }}">{{ $resource->title }}
@@ -16,9 +16,9 @@
                             <span class="error text-danger">{{ $message }}</span>
                         @enderror
                     </div>
-                    <div class="form-group">
+                    <div class="form-group" style="margin-top:-10px;">
                         <Label>Year</Label>
-                        <input type="number" wire:model="year" id="year" min="1900" max="{{ date('Y') }}"
+                        <input type="number" style="width: 200px; margin-top: -10px;"  class="form-control" wire:model="year" id="year" min="1900" max="{{ date('Y') }}"
                             step="1" value="{{ date('Y') }}">
                     </div>
                 </div>
@@ -32,13 +32,13 @@
                         aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-md">
                             <div class="modal-content">
-                                <div class="modal-header" style="background-color: #234495; color:white;">
-                                    <h5 class="modal-title" id="exampleModalLabel">Adding RESOURCES</h5>
+                                <div class="modal-header text-dark">
+                                    <h5 class="modal-title" id="exampleModalLabel">Adding Resources</h5>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
                                 </div>
-                                <div class="modal-body text-center">
+                                <div class="modal-body text-start">
                                     <form>
                                         @csrf
                                         <div class="container mx-auto">
@@ -51,7 +51,7 @@
                                             <div class="col-md-12">
                                                 <div class="form-group">
                                                     <label for="" style="color:dimgray">Select Resources</label>
-                                                    <select class="form-select" wire:model="resource_id">
+                                                    <select class="form-control" style="width: 200px;" wire:model="resource_id">
                                                         <option selected>Select Resources</option>
                                                         @foreach ($resources as $resource)
                                                             <option value="{{ $resource->id }}">{{ $resource->title }}
@@ -119,10 +119,10 @@
                         <table class="table text-center">
                             <tr>
                                 <th>Title</th>
-                                <th>Date</th>
+                                <th scope="col" class="d-none d-md-table-cell d-lg-table-cell d-xl-table-cell">Date</th>
                                 <th>Link</th>
-                                <th>Hashtag</th>
-                                <th>Resource</th>
+                                <th scope="col" class="d-none d-md-table-cell d-lg-table-cell d-xl-table-cell">Hashtag</th>
+                                <th scope="col" class="d-none d-md-table-cell d-lg-table-cell d-xl-table-cell">Resource</th>
                                 @if (auth()->check() && auth()->user()->admin == true)
                                     <th>Edit/Delete</th>
                                 @endif
@@ -131,21 +131,20 @@
                                 <tr>
 
                                     <td>{{ $file->title }}</td>
-                                    <td>{{ $file->date }}</td>
+                                    <td scope="col" class="d-none d-md-table-cell d-lg-table-cell d-xl-table-cell">{{ $file->date }}</td>
                                     <td><a href="{{ $file->link }}">Link</a>
                                     </td>
-                                    <td>{{ $file->hashtag }}</td>
-                                    <td>{{ $file->resource->title }}</td>
-                                    <td> <button type="button" class="btn bg-success" data-toggle="modal"
+                                    <td scope="col" class="d-none d-md-table-cell d-lg-table-cell d-xl-table-cell">{{ $file->hashtag }}</td>
+                                    <td scope="col" class="d-none d-md-table-cell d-lg-table-cell d-xl-table-cell">{{ $file->resource->title }}</td>
+                                    <td> <button type="button" class="btn fas m-1" data-toggle="modal"
                                             data-target="#updateModal" wire:click="editFile({{ $file->id }})">
-                                            Edit
+                                            <span class="fas fa-edit text-warning"></span>
                                         </button>
                                         <div wire:ignore.self class="modal fade" id="updateModal" tabindex="-1"
                                             role="dialog" aria-labelledby="updateModalLabel" aria-hidden="true">
                                             <div class="modal-dialog modal-md">
                                                 <div class="modal-content">
-                                                    <div class="modal-header"
-                                                        style="background-color: #234495; color:white;">
+                                                    <div class="modal-header text-dark">
                                                         <h5 class="modal-title" id="updateModalLabel">Updating Files
                                                         </h5>
                                                         <button type="button" class="close" data-dismiss="modal"
@@ -153,10 +152,10 @@
                                                             <span aria-hidden="true">&times;</span>
                                                         </button>
                                                     </div>
-                                                    <div class="modal-body text-center">
+                                                    <div class="modal-body">
                                                         <form>
                                                             @csrf
-                                                            <div class="container mx-auto">
+                                                            <div class="container">
                                                                 <div class="col-md-12">
                                                                     <div class="form-group">
                                                                         <label for=""
@@ -170,7 +169,7 @@
                                                                         <label for=""
                                                                             style="color:dimgray">Select
                                                                             Resources</label>
-                                                                        <select class="form-select"
+                                                                        <select class="form-control" style="width: 200px;"
                                                                             wire:model="resource_id">
                                                                             <option selected>Select Resources</option>
                                                                             @foreach ($resources as $resource)
@@ -230,22 +229,26 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <button type="button" class="btn bg-danger" data-toggle="modal"
+                                        <button type="button" class="btn" data-toggle="modal"
                                             data-target="#deleteModal" wire:click="deleteFile({{ $file->id }})">
-                                            Delete
+                                            <span class="fas fa-trash-alt text-danger"></span>
                                         </button>
                                         <div wire:ignore.self class="modal fade" id="deleteModal" tabindex="-1"
                                             role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
                                             <div class="modal-dialog modal-md">
                                                 <div class="modal-content">
-                                                    <div class="modal-header bg-danger">
-                                                        <h5 class="modal-title" id="deleteModalLabel">Are you sure to
-                                                            delete this?
-                                                        </h5>
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title text-danger" id="exampleModalLabel">
+                                                            Delete
+                                                            Confirmation</h5>
                                                         <button type="button" class="close" data-dismiss="modal"
                                                             aria-label="Close">
                                                             <span aria-hidden="true">&times;</span>
                                                         </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <p class="text-dark">Are you sure you want to delete this
+                                                            file?</p>
                                                     </div>
                                                     <div class="modal-body text-center">
                                                         <form>
@@ -254,8 +257,7 @@
                                                             <div class="modal-footer">
                                                                 <button wire:click.prevent="destroyFile()"
                                                                     class="btn btn-danger">
-                                                                    <span class="fas fa-save"></span> Delete
-                                                                </button>
+                                                                    Confirm </button>
                                                             </div>
                                                         </form>
                                                     </div>
