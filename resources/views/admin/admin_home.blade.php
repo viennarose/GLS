@@ -5,41 +5,50 @@
 
     <div class="row">
         <div class="col-sm-6 col-lg-3">
+        <a href="{{route('admin.unapproved_users')}}">
             <div class="card mb-4 elevation-3">
                 <div class="card-body text-center">
                     <i class="fas fa-exclamation-circle mb-2" style="font-size:24px;"></i>
-                    <h5 class="card-title mb-0">0</h5>
+                    <h5 class="card-title mb-0 text-dark">0</h5>
                     <p class="card-text text-muted">Approval Requests</p>
                 </div>
             </div>
+            </a>
         </div>
+
         <div class="col-sm-6 col-lg-3">
+        <a href="{{route('admin.approved_users')}}">
             <div class="card mb-4 elevation-3">
                 <div class="card-body text-center">
                     <i class="fas fa-users mb-2" style="font-size:24px;"></i>
-                    <h5 class="card-title mb-0">0</h5>
+                    <h5 class="card-title mb-0 text-dark">0</h5>
                     <p class="card-text text-muted">Total Users</p>
                 </div>
             </div>
+         </a>
         </div>
         <div class="col-sm-6 col-lg-3">
+        <a href="{{route('admin.files.index')}}">
             <div class="card mb-4 elevation-3">
                 <div class="card-body text-center">
                     <i class="fas fa-envelope mb-2" style="font-size:24px;"></i>
-                    <h5 class="card-title mb-0">0</h5>
-                    <p class="card-text text-muted">EDICT Files</p>
+                    <h5 class="card-title mb-0 text-dark">0</h5>
+                    <p class="card-text text-muted">Files</p>
                 </div>
             </div>
+         </a>
         </div>
         <div class="col-sm-6 col-lg-3">
+        <a href="{{route('admin.resources')}}">
             <div class="card mb-4 elevation-3">
                 <div class="card-body text-center">
                     <i class="fas fa-chart-bar mb-2" style="font-size:24px;"></i>
-                    <h5 class="card-title mb-0">101%</h5>
-                    <p class="card-text text-muted">Kenn Gwapo</p>
+                    <h5 class="card-title mb-0 text-dark">0</h5>
+                    <p class="card-text text-muted">Resources</p>
                 </div>
             </div>
         </div>
+      </a>
     </div>
 
 
