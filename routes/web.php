@@ -3,10 +3,13 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FileController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ResourcesController;
 use App\Http\Controllers\Admin_FileController;
 use App\Http\Controllers\Admin_HomeController;
 use App\Http\Controllers\Admin_UserController;
+use App\Http\Controllers\Admin_ProfileController;
+
 
 
 Route::get('/', function () {
@@ -21,9 +24,11 @@ Route::middleware(['auth'])->group(function () {
 
 });
 
-Route::middleware(['approved'])->group(function () {
+Route::middleware(['auth','approved'])->group(function () {
     Route::get('/home', [HomeController::class, 'index'])->name('home');
     // Route::get('/files', [FileController::class, 'index'])->name('files.index');
+    Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
+
 });
 
 Route::prefix('admin')->middleware(['auth', 'isAdmin'])->group(function () {
@@ -36,6 +41,8 @@ Route::prefix('admin')->middleware(['auth', 'isAdmin'])->group(function () {
 
     Route::get('/users', [Admin_UserController::class, 'approvedIndex'])->name('admin.approved_users');
     Route::delete('/user/{id}', [Admin_UserController::class, 'delete_user'])->name('admin.delete_user');
+
+    Route::get('/profile', [Admin_ProfileController::class, 'index'])->name('admin.profile');
 
 });
 
