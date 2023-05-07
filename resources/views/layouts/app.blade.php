@@ -35,6 +35,7 @@
             <div class="container">
                 @if(auth()->check() && (auth()->user()->admin == true))
                 <a class="navbar-brand" href="{{ route('admin.home_dashboard') }}">
+                    <img src="/img/SC_BWgoldBlue.png"  style="height: 35px; margin-right: 10px;" alt="">
                     {{ config('app.name', 'GLS') }}
                 </a>
                 @else
