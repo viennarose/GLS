@@ -8,7 +8,7 @@
 </div>
 @endif
 
-<h1 class="text-center">{{ Auth::user()->name }}
+<h1 class="text-center mt-5">{{ Auth::user()->name }}
 Profile</h1>
 <hr>
  <div class="container">
