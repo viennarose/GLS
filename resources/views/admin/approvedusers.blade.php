@@ -27,12 +27,13 @@
                                 <th>Profile Image</th>
                                 <th>Name</th>
                                 <th>Email</th>
-                                <th>Trash</th>
+                                <th class="d-none d-md-table-cell d-lg-table-cell d-xl-table-cell"
+                                style="text-align: center">Trash</th>
 
                             </tr>
                             @forelse ($users as $user)
                                 <tr>
-                                    <td><img src="https://cdn.onlinewebfonts.com/svg/img_81837.png" alt="Image"
+                                    <td><img src="{{ asset('user_img/' . $user->profile_image) }}"alt="Image"
                                             style="border-radius: 50%; height: 50px; width: 50px;"></td>
                                     <td>{{ $user->name }}</td>
                                     <td>{{ $user->email }}</td>
