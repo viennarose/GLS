@@ -35,7 +35,7 @@
         crossorigin="anonymous" />
 
     @yield('third_party_stylesheets')
-
+@livewireStyles()
     @stack('page_css')
 </head>
 
@@ -148,5 +148,5 @@
 
     @stack('page_scripts')
 </body>
-
+@livewireScripts()
 </html>

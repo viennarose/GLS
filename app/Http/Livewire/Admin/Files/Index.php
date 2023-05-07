@@ -6,16 +6,19 @@ use Exception;
 use App\Models\File;
 use Livewire\Component;
 use App\Models\Resource;
+use Livewire\WithPagination;
 
 class Index extends Component
 {
 
-    public $description, $date, $hashtag, $link;
+    use WithPagination;
+    public $description, $date, $hashtag, $link, $resource_id, $title;
+    public $byResource = 'all', $year;
     public $search;
-    public function AddFile(){
+    public function addFile(){
 
         $this->validate([
-            'resource' => ['required'],
+            'resource_id' => ['required'],
             'title' => ['required'],
             'description' => ['string', 'required'],
             'date' => ['string', 'required'],
@@ -55,17 +58,17 @@ class Index extends Component
 
     public function updateFile(){
         $this->validate([
-            'resource_id' => $this->resource_id,
-            'title' => $this->title,
-            'description' => $this->description,
-            'date' => $this->date,
-            'hashtag' => $this->hashtag,
-            'link' => $this->link
+            'resource_id' => ['required'],
+            'title' => ['required'],
+            'description' => ['string', 'required'],
+            'date' => ['string', 'required'],
+            'hashtag' => ['required'],
+            'link' => ['string', 'required'],
         ]);
 
         $file = File::find($this->id);
 
-        file::where('id',$this->file_id)->update([
+        File::where('id',$this->file_id)->update([
             'resource_id' => $this->resource_id,
             'title' => $this->title,
             'description' => $this->description,
@@ -95,13 +98,13 @@ class Index extends Component
         $query = File::orderBy('date', 'asc')
             ->search($this->search);
 
-        // if($this->byRate){
-        //     $query->where('rate', '>=', $this->byRate);
-        // }
+            if($this->byResource != 'all'){
+                $query->where('resource_id', $this->byResource);
+            }
+            if($this->year){
+                $query->whereYear('date', $this->year);
+            }
 
-        // if($this->byLocation != 'all'){
-        //     $query->where('location', $this->byLocation);
-        // }
 
         $files = $query->paginate(6);
         return compact('files');
