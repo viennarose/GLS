@@ -25,10 +25,12 @@
                         <table class="table text-center elevation-3">
                             <tr>
                                 <th>Trash</th>
-                                <th scope="col" class="d-none d-md-table-cell d-lg-table-cell d-xl-table-cell">Email Verification Status</th>
+                                <th scope="col" class="d-none d-md-table-cell d-lg-table-cell d-xl-table-cell">Email
+                                    Verification Status</th>
                                 <th>Name</th>
                                 <th scope="col" class="d-none d-md-table-cell d-lg-table-cell d-xl-table-cell">Email</th>
-                                <th scope="col" class="d-none d-md-table-cell d-lg-table-cell d-xl-table-cell">Date Registered</th>
+                                <th scope="col" class="d-none d-md-table-cell d-lg-table-cell d-xl-table-cell">Date
+                                    Registered</th>
                                 <th>...</th>
 
                             </tr>
@@ -78,8 +80,10 @@
                                         @endif
                                     </td>
                                     <td>{{ $user->name }}</td>
-                                    <td scope="col" class="d-none d-md-table-cell d-lg-table-cell d-xl-table-cell">{{ $user->email }}</td>
-                                    <td scope="col" class="d-none d-md-table-cell d-lg-table-cell d-xl-table-cell">{{ $user->created_at->format('F d, Y \a\t h:i A') }}</td>
+                                    <td scope="col" class="d-none d-md-table-cell d-lg-table-cell d-xl-table-cell">
+                                        {{ $user->email }}</td>
+                                    <td scope="col" class="d-none d-md-table-cell d-lg-table-cell d-xl-table-cell">
+                                        {{ $user->created_at->format('F d, Y \a\t h:i A') }}</td>
                                     <td><a href="{{ route('admin.users.approve', $user->id) }}"
                                             class="btn btn-primary btn-sm">Approve ?</a></td>
                                 </tr>

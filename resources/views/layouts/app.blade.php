@@ -20,12 +20,12 @@
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
 
 
-     <!-- Scripts -->
-     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.3/umd/popper.min.js"></script>
-     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-     @livewireStyles()
-{{--
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.3/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    @livewireStyles()
+    {{--
      <link href="https://netdna.bootstrapcdn.com/bootstrap/2.3.2/css/bootstrap.min.css" rel="stylesheet">
 <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.2.0/css/datepicker.min.css" rel="stylesheet">
 
@@ -44,7 +44,7 @@
             <div class="container">
 
                 <a class="navbar-brand" href="{{ route('home') }}">
-                    <img src="/img/SC_BWgoldBlue.png"  style="height: 35px; margin-right: 10px;" alt="">
+                    <img src="/img/SC_BWgoldBlue.png" style="height: 35px; margin-right: 10px;" alt="">
                     {{ config('app.name', 'GLS') }}
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -63,18 +63,20 @@
                     <ul class="navbar-nav ms-auto">
                         <!-- Authentication Links -->
 
-                        @if(auth()->check() && (auth()->user()->admin == true))
-                        <li class="nav-item mt-1">
-                            <a class="nav-link text-dark" href="{{route('admin.home_dashboard')}}"><span class="fas fa-sign-out-alt"></span> Back to Admin Page &nbsp;&nbsp;</a>
+                        @if (auth()->check() && auth()->user()->admin == true)
+                            <li class="nav-item mt-1">
+                                <a class="nav-link text-dark" href="{{ route('admin.home_dashboard') }}"><span
+                                        class="fas fa-sign-out-alt"></span> Back to Admin Page &nbsp;&nbsp;</a>
 
-                        </li>
+                            </li>
                         @endif
                         <li class="nav-item mt-1">
                             <a class="nav-link text-dark" href="{{ route('home') }}"> &nbsp;Home</a>
                         </li>
 
                         <li class="nav-item mt-1">
-                            <a class="nav-link text-dark" href="{{ route('contact_information') }}"> &nbsp;Contact Information</a>
+                            <a class="nav-link text-dark" href="{{ route('contact_information') }}"> &nbsp;Contact
+                                Information</a>
                         </li>
 
                         <li class="nav-item mt-1">
@@ -96,7 +98,7 @@
                         @else
                             <li class="nav-item dropdown">
                                 <a d="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
-                                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     <img src="/user_img/user_icon.png" style="height: 30px; width: 30px;"
                                         class="user-image img-circle elevation-2" alt="User Image">
                                 </a>
@@ -104,12 +106,13 @@
                                 <div class="dropdown-menu dropdown-menu-end text-center" aria-labelledby="navbarDropdown">
                                     <span class="text-center">{{ Auth::user()->name }}</span>
                                     <hr>
-                                    <a class="dropdown-item" href="{{route('profile')}}"><span class="fas fa-user"></span> Profile</a>
+                                    <a class="dropdown-item" href="{{ route('profile') }}"><span
+                                            class="fas fa-user"></span> Profile</a>
 
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                       <span class="fas fa-sign-out-alt"></span> {{ __('Logout') }}
+                                        <span class="fas fa-sign-out-alt"></span> {{ __('Logout') }}
                                     </a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
@@ -131,4 +134,5 @@
 </body>
 @yield('script')
 @livewireScripts()
+
 </html>
