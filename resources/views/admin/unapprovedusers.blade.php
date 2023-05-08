@@ -25,17 +25,16 @@
                         <table class="table text-center">
                             <tr>
                                 <th>Trash</th>
-                                <th>Email Verification Status</th>
+                                <th scope="col" class="d-none d-md-table-cell d-lg-table-cell d-xl-table-cell">Email Verification Status</th>
                                 <th>Name</th>
-                                <th>Email</th>
-                                <th>Date Registered</th>
+                                <th scope="col" class="d-none d-md-table-cell d-lg-table-cell d-xl-table-cell">Email</th>
+                                <th scope="col" class="d-none d-md-table-cell d-lg-table-cell d-xl-table-cell">Date Registered</th>
                                 <th>...</th>
 
                             </tr>
                             @forelse ($users as $user)
                                 <tr>
-                                    <td class="d-none d-md-table-cell d-lg-table-cell d-xl-table-cell"
-                                        style="text-align: center">
+                                    <td>
                                         <a href="#" data-toggle="modal" id="requests_delete_link" class="btn"
                                             data-target="#delete_requests_id{{ $user->id }}">
                                             <span class="text-danger fas fa-trash-alt"></span>
@@ -70,7 +69,7 @@
                                         </div>
                                     </td>
 
-                                    <td>
+                                    <td scope="col" class="d-none d-md-table-cell d-lg-table-cell d-xl-table-cell">
                                         @if ($user->email_verified_at)
                                             <span class="text-success"><i class="fas fa-check"></i> Verified</span>
                                         @else
@@ -79,8 +78,8 @@
                                         @endif
                                     </td>
                                     <td>{{ $user->name }}</td>
-                                    <td>{{ $user->email }}</td>
-                                    <td>{{ $user->created_at->format('F d, Y \a\t h:i A') }}</td>
+                                    <td scope="col" class="d-none d-md-table-cell d-lg-table-cell d-xl-table-cell">{{ $user->email }}</td>
+                                    <td scope="col" class="d-none d-md-table-cell d-lg-table-cell d-xl-table-cell">{{ $user->created_at->format('F d, Y \a\t h:i A') }}</td>
                                     <td><a href="{{ route('admin.users.approve', $user->id) }}"
                                             class="btn btn-primary btn-sm">Approve ?</a></td>
                                 </tr>

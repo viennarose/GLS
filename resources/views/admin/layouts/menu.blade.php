@@ -13,19 +13,33 @@
         <i class="fas fa-exclamation-circle fa-pull-left fa-md text-white"></i>
     </a>
 </li>
-
 <li class="nav-item">
     <a href="{{ route('admin.files.index') }}"
-        class="nav-link ">
-        <p class="text-white">FILES</p>
-        <i class="fas fa-file fa-pull-left fa-md text-white"></i>
+        class="nav-link {{ Request::is('admin/files*') ? 'bg-secondary active' : '' }}">
+        <p class="text-white">Files</p>
+        <i class="fas fa-envelope fa-pull-left fa-md text-white"></i>
+    </a>
+</li>
+
+<li class="nav-item">
+    <a href="{{ url('admin/resources') }}"
+        class="nav-link {{ Request::is('admin/resources*') ? 'bg-secondary active' : '' }}">
+        <p class="text-white">Resources</p>
+        <i class="fas fa-chart-bar fa-pull-left fa-md text-white"></i>
     </a>
 </li>
 <li class="nav-item">
-    <a href="{{ route('admin.resources') }}"
-        class="nav-link {{ Request::is('admin/resources*') ? 'bg-secondary active' : '' }}">
-        <p class="text-white">RESOURCES</p>
-        <i class="fas fa-file fa-pull-left fa-md text-white"></i>
+    <a href="{{ url('admin/contact') }}"
+        class="nav-link {{ Request::is('admin/contact*') ? 'bg-secondary active' : '' }}">
+        <p class="text-white">Contact</p>
+        <i class="fas fa-phone fa-pull-left fa-md text-white"></i>
+    </a>
+</li>
+<li class="nav-item">
+    <a href="{{ url('admin/about') }}"
+        class="nav-link {{ Request::is('admin/about*') ? 'bg-secondary active' : '' }}">
+        <p class="text-white">About</p>
+        <i class="fas fa-question fa-pull-left fa-md text-white"></i>
     </a>
 </li>
 

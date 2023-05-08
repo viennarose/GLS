@@ -4,6 +4,8 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Database\Seeders\AboutSeeder;
+use Database\Seeders\ContactSeeder;
 use Database\Seeders\ResourcesSeeder;
 
 class DatabaseSeeder extends Seeder
@@ -21,5 +23,7 @@ class DatabaseSeeder extends Seeder
         // ]);
         $this->call(AdminSeeder::class);
         $this->call(ResourcesSeeder::class);
+        $this->call(ContactSeeder::class);
+        $this->call(AboutSeeder::class);
     }
 }

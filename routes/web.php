@@ -3,10 +3,17 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FileController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ContactInformationController;
+use App\Http\Controllers\AboutUsController;
+use App\Http\Controllers\AboutController;
+use App\Http\Controllers\ContactController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ResourcesController;
 use App\Http\Controllers\Admin_FileController;
 use App\Http\Controllers\Admin_HomeController;
 use App\Http\Controllers\Admin_UserController;
+use App\Http\Controllers\Admin_ProfileController;
+
 
 
 Route::get('/', function () {
@@ -21,9 +28,14 @@ Route::middleware(['auth'])->group(function () {
 
 });
 
-Route::middleware(['approved'])->group(function () {
+Route::middleware(['auth','approved'])->group(function () {
     Route::get('/home', [HomeController::class, 'index'])->name('home');
     // Route::get('/files', [FileController::class, 'index'])->name('files.index');
+    Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
+    Route::get('/contact_information', [ContactInformationController::class, 'index'])->name('contact_information');
+    Route::get('/about_us', [AboutUsController::class, 'index'])->name('about_us');
+
+
 });
 
 Route::prefix('admin')->middleware(['auth', 'isAdmin'])->group(function () {
@@ -33,11 +45,19 @@ Route::prefix('admin')->middleware(['auth', 'isAdmin'])->group(function () {
     Route::get('/pending_approval_requests', [Admin_UserController::class, 'index'])->name('admin.unapproved_users');
     Route::get('/users/{user_id}/approve', [Admin_UserController::class, 'approve'])->name('admin.users.approve');
     Route::delete('/delete_requests/{id}', [Admin_UserController::class, 'delete_requests'])->name('admin.delete_requests');
-
     Route::get('/users', [Admin_UserController::class, 'approvedIndex'])->name('admin.approved_users');
     Route::delete('/user/{id}', [Admin_UserController::class, 'delete_user'])->name('admin.delete_user');
+    Route::get('/profile', [Admin_ProfileController::class, 'index'])->name('admin.profile');
 
 });
+
+Route::middleware(['auth', 'isAdmin'])->group(function () {
+    Route::get('admin/resources', [ResourcesController::class, 'index']);
+    Route::get('admin/about', [AboutController::class, 'index']);
+    Route::get('admin/contact', [ContactController::class, 'index']);
+});
+
+
 
 
 

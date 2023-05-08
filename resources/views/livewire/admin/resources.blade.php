@@ -5,7 +5,7 @@
                 <input type="search" wire:model="search" class="form-control input mb-3 mt-3" placeholder="Search">
                 <div class="card">
 
-                    <div class="card-header text-center">RESOURCES</div>
+                    <div class="card-header text-center"><span class="fas fa-chart-bar"></span> RESOURCES</div>
 
                     <button type="button" class="btn" style="background-color: #343a40; color:white;"
                         data-toggle="modal" data-target="#exampleModal">
@@ -15,41 +15,34 @@
                         aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-md">
                             <div class="modal-content">
-                                <div class="modal-header" style="background-color: #234495; color:white;">
-                                    <h5 class="modal-title" id="exampleModalLabel">Adding EDICTS</h5>
+                                <div class="modal-header text-dark">
+                                    <h5 class="modal-title" id="exampleModalLabel">Adding Resources</h5>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
                                 </div>
                                 <div class="modal-body text-center">
-                                    <form wire:submit.prevent="AddResources()">
+                                    <form>
                                         @csrf
                                         <div class="container mx-auto">
                                             <div class="col-md-12">
                                                 <div class="form-group">
-                                                    <label for="" style="color:dimgray">Title</label>
+                                                    <label for="title" style="color:dimgray">Title</label>
                                                     <input type="text" class="form-control" wire:model='title'
                                                         required>
+                                                    @error('title')
+                                                        <span class="error text-danger">{{ $message }}</span>
+                                                    @enderror
                                                 </div>
                                             </div>
-
                                         </div>
 
                                         <div class="modal-footer">
-                                            <button type="submit" class="btn btn-success"><span
-                                                    class="fas fa-save"></span>
-                                                Submit</button>
+                                            <button wire:click.prevent="addResources()" class="btn btn-success">
+                                                <span class="fas fa-save"></span> Submit
+                                            </button>
                                         </div>
                                     </form>
-
-                                    {{-- <form>
-                                        <div class="form-group">
-                                            <label for="title">Title:</label>
-                                            <input type="text" class="form-control" id="title" wire:model="title" />
-                                            @error('title') <span class="error">{{ $message }}</span> @enderror
-                                        </div>
-                                        <button wire:click='AddResources()' class="btn btn-primary">Create Resource</button>
-                                    </form> --}}
                                 </div>
                             </div>
                         </div>
@@ -68,56 +61,94 @@
                             </div>
                         @endif
 
-                        <table class="table text-center">
+                        <table class="table text-center table-bordered">
                             <tr>
-                                <th>ID</th>
-                                <th>TITLE</th>
-                                @if(auth()->check() && (auth()->user()->admin == true))
-                                <th>Edit/Delete</th>
+                                <th>Title</th>
+                                @if (auth()->check() && auth()->user()->admin == true)
+                                    <th>Edit/Delete</th>
                                 @endif
                             </tr>
                             @forelse ($resources as $resource)
                                 <tr>
-
-                                    <td>{{ $resource->id }}</td>
                                     <td>{{ $resource->title }}</td>
 
                                     <td>
-                                         <a class="btn btn-success ms-1" type="button" data-bs-toggle="modal"
-                                            data-bs-target="#updateResources">
-                                            <svg wire:click="editResources({{ $resource->id }})"
-                                                xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                                fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
-                                                <path
-                                                    d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z" />
-                                            </svg>
-                                        </a>
-
-                                        <div wire:ignore.self class="modal fade" id="updateResources" tabindex="-1" role="dialog"
-                                        aria-labelledby="updateResourcesLabel" aria-hidden="true">
+                                        <button type="button" class="btn m-1" data-toggle="modal"
+                                            data-target="#updateModal" wire:click="editResources({{ $resource->id }})">
+                                            <span class="fas fa-edit text-warning"></span>
+                                        </button>
+                                        <div wire:ignore.self class="modal fade" id="updateModal" tabindex="-1"
+                                            role="dialog" aria-labelledby="updateModalLabel" aria-hidden="true">
                                             <div class="modal-dialog modal-md">
                                                 <div class="modal-content">
-                                                    <div class="modal-header" style="background-color: #234495; color:white;">
-                                                        <h5 class="modal-title" id="updateResourcesLabel">Updating Resources</h5>
-                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    <div class="modal-header text-dark">
+                                                        <h5 class="modal-title" id="updateModalLabel">Updating Resources
+                                                        </h5>
+                                                        <button type="button" class="close" data-dismiss="modal"
+                                                            aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
                                                     </div>
                                                     <div class="modal-body">
-                                                        <form wire:submit.prevent="updateResources()">
+                                                        <form>
                                                             @csrf
-                                                            <div class="container mx-auto">
+                                                            <div class="container">
                                                                 <div class="col-md-12">
                                                                     <div class="form-group">
-                                                                        <label for="" style="color:dimgray">Title</label>
-                                                                        <input type="text" class="form-control" wire:model='title'
-                                                                            required>
+                                                                        <label for="title"
+                                                                            style="color:dimgray">Title</label>
+                                                                        <input type="text" class="form-control"
+                                                                            wire:model='title' required>
+                                                                        @error('title')
+                                                                            <span
+                                                                                class="error text-danger">{{ $message }}</span>
+                                                                        @enderror
                                                                     </div>
                                                                 </div>
                                                             </div>
 
                                                             <div class="modal-footer">
-                                                                <button type="submit" class="btn btn-success"><span
-                                                                        class="fas fa-save"></span>
-                                                                    Submit</button>
+                                                                <button wire:click.prevent="updateResources()"
+                                                                    class="btn btn-success">
+                                                                    <span class="fas fa-save"></span> Save Changes
+                                                                </button>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <button type="button" class="btn" data-toggle="modal"
+                                            data-target="#deleteModal"
+                                            wire:click="deleteResources({{ $resource->id }})">
+                                            <span class="fas fa-trash-alt text-danger"></span>
+                                        </button>
+                                        <div wire:ignore.self class="modal fade" id="deleteModal" tabindex="-1"
+                                            role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog modal-md">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title text-danger" id="exampleModalLabel">
+                                                            Delete
+                                                            Confirmation</h5>
+                                                        <button type="button" class="close" data-dismiss="modal"
+                                                            aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <p class="text-dark">Are you sure you want to delete this
+                                                            resource?</p>
+                                                    </div>
+                                                    <div class="modal-body text-center">
+                                                        <form>
+                                                            @csrf
+
+                                                            <div class="modal-footer">
+                                                                <button wire:click.prevent="destroyResources()"
+                                                                    class="btn btn-danger">
+                                                                    Confirm
+                                                                </button>
                                                             </div>
                                                         </form>
                                                     </div>
@@ -125,39 +156,49 @@
                                             </div>
                                         </div>
 
-                                            <a type="button" data-bs-toggle="modal" data-bs-target="#deleteModal"
-                                                class="btn btn-danger ms-1">
-                                                <svg wire:click="deleteResources({{ $resource->id }})"
-                                                    xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                                    fill="currentColor" class="bi bi-trash3-fill"
-                                                    viewBox="0 0 16 16">
-                                                    <path
-                                                        d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5Zm-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5ZM4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06Zm6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528ZM8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5Z" />
-                                                </svg>
-                                            </a>
-
-                                            <div>
-                                                <div wire:ignore.self class="modal fade" id="deleteModal" tabindex="-1"
-                                                    aria-labelledby="deleteModalLabel" aria-hidden="true">
-                                                    <div class="modal-dialog">
-                                                        <div class="modal-content">
-                                                            <div class="modal-header bg-danger">
-                                                                <h1 class="modal-title fs-5" id="deleteModalLabel">Delete</h1>
-                                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                            </div>
-                                                            <div class="modal-body">
-                                                                Are you sure you want to delete this?
-                                                            </div>
-                                                            <div class="modal-footer">
-                                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                                                <button wire:click="destroyResources" class="btn btn-primary">Delete</button>
+                                    </td>
+                                    <div wire:ignore.self class="modal fade" id="updateResources" tabindex="-1"
+                                        role="dialog" aria-labelledby="updateResourcesLabel" aria-hidden="true">
+                                        <div class="modal-dialog modal-md">
+                                            <div class="modal-content">
+                                                <div class="modal-header"
+                                                    style="background-color: #234495; color:white;">
+                                                    <h5 class="modal-title" id="updateResourcesLabel">Adding RESOURCES
+                                                    </h5>
+                                                    <button type="button" class="close" data-dismiss="modal"
+                                                        aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body text-center">
+                                                    <form>
+                                                        @csrf
+                                                        <div class="container mx-auto">
+                                                            <div class="col-md-12">
+                                                                <div class="form-group">
+                                                                    <label for="title"
+                                                                        style="color:dimgray">Title</label>
+                                                                    <input type="text" class="form-control"
+                                                                        wire:model='title' required>
+                                                                    @error('title')
+                                                                        <span
+                                                                            class="error text-danger">{{ $message }}</span>
+                                                                    @enderror
+                                                                </div>
                                                             </div>
                                                         </div>
-                                                    </div>
+
+                                                        <div class="modal-footer">
+                                                            <button wire:click.prevent="updateResources()"
+                                                                class="btn btn-success">
+                                                                <span class="fas fa-save"></span> Submit
+                                                            </button>
+                                                        </div>
+                                                    </form>
                                                 </div>
                                             </div>
-                                    </td>
-
+                                        </div>
+                                    </div>
                                 </tr>
                             @empty
                                 <tr>
@@ -165,6 +206,9 @@
                                 </tr>
                             @endforelse
                         </table>
+                    </div>
+                    <div class="d-flex justify-content-center flex-wrap mt-2">
+                        {{ $resources->onEachSide(-1)->links() }}
                     </div>
                 </div>
             </div>

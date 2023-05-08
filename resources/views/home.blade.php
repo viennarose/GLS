@@ -1,12 +1,38 @@
 @extends('layouts.app')
 
+
 @section('content')
-    <div class="text-center">
-        {{-- @if (auth()->check() && auth()->user()->admin == true)
-            <a class="btn btn-primary mb-3" href="{{ route('files.index') }}">EDICT FILES</a>
-        @else
-            <a class="btn btn-primary" href="{{ route('files.index') }}">EDICT files</a>
-        @endif --}}
-    </div>
-    <p class="text-center" style="font-size: 30px;">Normal User Home Page</p>
+
+
+{{-- @include('layouts.sidebar') --}}
+
+   <div class="container mt-5 text-center">
+    <livewire:user.resources>
+    {{-- <img class="hm"  src="/img/SC_BWgoldBlue.png" alt=""> --}}
+   </div>
+
+
+   <style>
+    .hm{
+        height: 300px;
+        width: 300px;
+        margin: auto;
+
+    }
+   </style>
 @endsection
+@section('script')
+<script>
+   $(document).ready(function(){
+  $("#datepicker").datepicker({
+     format: "yyyy",
+     viewMode: "years",
+     minViewMode: "years",
+     autoclose:true
+  });
+})
+
+</script>
+@endsection
+
+

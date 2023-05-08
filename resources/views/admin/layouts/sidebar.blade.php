@@ -1,5 +1,5 @@
-<aside class="main-sidebar sidebar-dark-primary elevation-4">
-    <a href="{{ url('/home') }}" class="brand-link">
+<aside class="main-sidebar sidebar-dark-primary">
+    <a href="{{ route('admin.home_dashboard') }}" class="brand-link">
         <img src="{{ url('/img/SC_BWgoldBlue.png') }}" alt="{{ config('app.name') }} Logo" class="brand-image img-circle">
         <span class="brand-text">{{ config('app.name') }}</span>
     </a>
