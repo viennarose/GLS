@@ -66,7 +66,7 @@
                         @if (auth()->check() && auth()->user()->admin == true)
                             <li class="nav-item mt-1">
                                 <a class="nav-link text-dark" href="{{ route('admin.home_dashboard') }}"><span
-                                        class="fas fa-sign-out-alt"></span> Back to Admin Page &nbsp;&nbsp;</a>
+                                        class="fas fa-arrow-right"></span> Back to Admin Page &nbsp;&nbsp;</a>
 
                             </li>
                         @endif
