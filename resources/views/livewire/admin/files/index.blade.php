@@ -3,14 +3,16 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="d-flex justify-content-center">
-                    <input type="search" wire:model="search" class="form-control input mb-3 mt-3" style="width: 400px;" placeholder="Search">
+                    <input type="search" wire:model="search" class="form-control input mb-3 mt-3" style="width: 400px;"
+                        placeholder="Search">
                 </div>
-              
+
                 <div class="col-md-12">
                     <div class="form-group text-center d-flex justify-content-center" style="margin-top:10px;">
                         <Label class="text-secondary" style="font-weight: 500;">Year &nbsp;</Label>
-                        <input type="number" style="width: 200px; margin-top: -10px;"  class="form-control" wire:model="year" id="year" min="1900" max="{{ date('Y') }}"
-                            step="1" value="{{ date('Y') }}">
+                        <input type="number" style="width: 200px; margin-top: -10px;" class="form-control"
+                            wire:model="year" id="year" min="1900" max="{{ date('Y') }}" step="1"
+                            value="{{ date('Y') }}">
                     </div>
                     <div class="form-group">
                         <select class="form-control" style="width: 230px;" wire:model="byResource">
@@ -24,7 +26,7 @@
                             <span class="error text-danger">{{ $message }}</span>
                         @enderror
                     </div>
-                   
+
                 </div>
                 <div class="card">
                     <div class="card-header text-center"><span class="fas fa-envelope"></span> FILES</div>
@@ -55,7 +57,8 @@
                                             <div class="col-md-12">
                                                 <div class="form-group">
                                                     <label for="" style="color:dimgray">Select Resources</label>
-                                                    <select class="form-control" style="width: 200px;" wire:model="resource_id">
+                                                    <select class="form-control" style="width: 200px;"
+                                                        wire:model="resource_id">
                                                         <option selected>Select Resources</option>
                                                         @foreach ($resources as $resource)
                                                             <option value="{{ $resource->id }}">{{ $resource->title }}
@@ -70,8 +73,7 @@
                                             <div class="col-md-12">
                                                 <div class="form-group">
                                                     <label for="" style="color:dimgray">Description</label>
-                                                    <textarea type="text" class="form-control" rows="5" wire:model='description'
-                                                        required></textarea>
+                                                    <textarea type="text" class="form-control" rows="5" wire:model='description' required></textarea>
                                                 </div>
                                             </div>
                                             <div class="col-md-12">
@@ -123,10 +125,13 @@
                         <table class="table text-center table-bordered elevation-3">
                             <tr>
                                 <th>Title</th>
-                                <th scope="col" class="d-none d-md-table-cell d-lg-table-cell d-xl-table-cell">Date</th>
+                                <th scope="col" class="d-none d-md-table-cell d-lg-table-cell d-xl-table-cell">Date
+                                </th>
                                 <th>Link</th>
-                                <th scope="col" class="d-none d-md-table-cell d-lg-table-cell d-xl-table-cell">Hashtag</th>
-                                <th scope="col" class="d-none d-md-table-cell d-lg-table-cell d-xl-table-cell">Resource</th>
+                                <th scope="col" class="d-none d-md-table-cell d-lg-table-cell d-xl-table-cell">
+                                    Hashtag</th>
+                                <th scope="col" class="d-none d-md-table-cell d-lg-table-cell d-xl-table-cell">
+                                    Resource</th>
                                 @if (auth()->check() && auth()->user()->admin == true)
                                     <th>Edit/Delete</th>
                                 @endif
@@ -135,11 +140,14 @@
                                 <tr>
 
                                     <td class="text-wrap">{{ $file->title }}</td>
-                                    <td scope="col" class="d-none d-md-table-cell d-lg-table-cell d-xl-table-cell">{{ $file->date }}</td>
+                                    <td scope="col" class="d-none d-md-table-cell d-lg-table-cell d-xl-table-cell">
+                                        {{ $file->date }}</td>
                                     <td><a href="{{ $file->link }}">Link</a>
                                     </td>
-                                    <td scope="col" class="d-none d-md-table-cell d-lg-table-cell d-xl-table-cell">{{ $file->hashtag }}</td>
-                                    <td scope="col" class="d-none d-md-table-cell d-lg-table-cell d-xl-table-cell">{{ $file->resource->title }}</td>
+                                    <td scope="col" class="d-none d-md-table-cell d-lg-table-cell d-xl-table-cell">
+                                        {{ $file->hashtag }}</td>
+                                    <td scope="col" class="d-none d-md-table-cell d-lg-table-cell d-xl-table-cell">
+                                        {{ $file->resource->title }}</td>
                                     <td> <button type="button" class="btn fas m-1" data-toggle="modal"
                                             data-target="#updateModal" wire:click="editFile({{ $file->id }})">
                                             <span class="fas fa-edit text-warning"></span>
@@ -173,7 +181,8 @@
                                                                         <label for=""
                                                                             style="color:dimgray">Select
                                                                             Resources</label>
-                                                                        <select class="form-control" style="width: 200px;"
+                                                                        <select class="form-control"
+                                                                            style="width: 200px;"
                                                                             wire:model="resource_id">
                                                                             <option selected>Select Resources</option>
                                                                             @foreach ($resources as $resource)
@@ -191,8 +200,7 @@
                                                                     <div class="form-group">
                                                                         <label for=""
                                                                             style="color:dimgray">Description</label>
-                                                                        <textarea type="text" class="form-control" rows="5"
-                                                                            wire:model='description' required></textarea>
+                                                                        <textarea type="text" class="form-control" rows="5" wire:model='description' required></textarea>
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-md-12">
@@ -282,5 +290,4 @@
             </div>
         </div>
     </div>
-
 </div>

@@ -28,7 +28,7 @@
                                 <th>Name</th>
                                 <th>Email</th>
                                 <th class="d-none d-md-table-cell d-lg-table-cell d-xl-table-cell"
-                                style="text-align: center">Trash</th>
+                                    style="text-align: center">Trash</th>
 
                             </tr>
                             @forelse ($users as $user)
