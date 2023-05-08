@@ -1,6 +1,8 @@
 <div>
-    <input type="search" wire:model="search" class="form-control input mb-3 mt-3 mx-auto" style="width: 400px;"
+    <div class="mt-5 col-md-4 mx-auto">
+        <input type="search" wire:model="search" class="form-control input mb-3 mt-3 mx-auto"
         placeholder="Search">
+    </div>
     <div class="col-md-2 mx-end" style="margin-top: -10px;">
         <Label>Year</Label>
         <input type="number" wire:model="byYear" class="form-control" id="year" min="1900"
