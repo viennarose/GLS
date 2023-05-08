@@ -2,9 +2,11 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-12">
-                <input type="search" wire:model="search" class="form-control input mb-3 mt-3" placeholder="Search">
+                <div class="d-flex justify-content-center">
+                    <input type="search" wire:model="search" class="form-control input mb-3 mt-3" style="width: 400px;"
+                        placeholder="Search">
+                </div>
                 <div class="card">
-
                     <div class="card-header text-center"><span class="fas fa-chart-bar"></span> RESOURCES</div>
 
                     <button type="button" class="btn" style="background-color: #343a40; color:white;"
@@ -214,5 +216,4 @@
             </div>
         </div>
     </div>
-
 </div>
