@@ -1,9 +1,17 @@
 <div>
     <div class="container">
-        <div class="row justify-content-center">
+        <div class="row">
             <div class="col-md-12">
-                <input type="search" wire:model="search" class="form-control input mb-3 mt-3" placeholder="Search">
+                <div class="d-flex justify-content-center">
+                    <input type="search" wire:model="search" class="form-control input mb-3 mt-3" style="width: 400px;" placeholder="Search">
+                </div>
+              
                 <div class="col-md-12">
+                    <div class="form-group text-center d-flex justify-content-center" style="margin-top:10px;">
+                        <Label class="text-secondary" style="font-weight: 500;">Year &nbsp;</Label>
+                        <input type="number" style="width: 200px; margin-top: -10px;"  class="form-control" wire:model="year" id="year" min="1900" max="{{ date('Y') }}"
+                            step="1" value="{{ date('Y') }}">
+                    </div>
                     <div class="form-group">
                         <select class="form-control" style="width: 230px;" wire:model="byResource">
                             <option selected value="all">Filter Resources</option>
@@ -16,11 +24,7 @@
                             <span class="error text-danger">{{ $message }}</span>
                         @enderror
                     </div>
-                    <div class="form-group text-center d-flex justify-content-center" style="margin-top:10px;">
-                        <Label class="text-secondary">Year &nbsp;</Label>
-                        <input type="number" style="width: 200px; margin-top: -10px;"  class="form-control" wire:model="year" id="year" min="1900" max="{{ date('Y') }}"
-                            step="1" value="{{ date('Y') }}">
-                    </div>
+                   
                 </div>
                 <div class="card">
                     <div class="card-header text-center"><span class="fas fa-envelope"></span> FILES</div>
@@ -116,7 +120,7 @@
                             </div>
                         @endif
 
-                        <table class="table text-center table-bordered">
+                        <table class="table text-center table-bordered elevation-3">
                             <tr>
                                 <th>Title</th>
                                 <th scope="col" class="d-none d-md-table-cell d-lg-table-cell d-xl-table-cell">Date</th>
@@ -250,7 +254,7 @@
                                                         <p class="text-dark">Are you sure you want to delete this
                                                             file?</p>
                                                     </div>
-                                                    <div class="modal-body text-center">
+                                                    <div class="text-center">
                                                         <form>
                                                             @csrf
 
