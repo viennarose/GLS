@@ -38,7 +38,7 @@
                         style="width: 23    0px;"><span class="fas fa-download"></span> View and Download Here</a>
 
                 </div>
-                <p><span style="font-weight: 600;">Hashtag:</span> {{ $file->hashtag }}</p>
+                <p class="mt-2 text-justify"><span style="font-weight: 600;">Hashtag:</span> {{ $file->hashtag }}</p>
             </div>
         @empty
             No files found.
