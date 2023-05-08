@@ -23,11 +23,20 @@
         @forelse ($files as $file)
             <div class="card text-start p-3 mb-2 shadow-lg">
 
-                {{ $file->title }}
-                {{ $file->date }}
-                <a href="{{ $file->link }}" target="_blank">View and Download Here</a>
-                {{ $file->hashtag }} <br>
-                {{ $file->resource->title }}
+                <div class="d-flex justify-content-between">
+                    <p><span style="font-weight: 600;">Date:</span>
+                        {{ Carbon\Carbon::parse($file->date)->format('F d, Y') }}</p>
+                    <p style="font-weight: 600; font-size: 12px;">{{ $file->resource->title }}</p>
+                </div>
+                <p class="text-wrap text-center" style="font-size: 18px; font-weight: 500;">{{ $file->title }}</p>
+                <hr>
+                <p class="text-justify"><span style="font-weight: 600;">Description:</span> {{ $file->description }}</p>
+                <div class="mx-auto">
+                    <a href="{{ $file->link }}" target="_blank" class="text-center btn btn-primary"
+                        style="width: 250px;">View and Download Here</a>
+
+                </div>
+                <p><span style="font-weight: 600;">Hashtag:</span> {{ $file->hashtag }}</p>
             </div>
         @empty
             No files found.
