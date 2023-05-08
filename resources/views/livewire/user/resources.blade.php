@@ -33,7 +33,7 @@
                 <p class="text-justify"><span style="font-weight: 600;">Description:</span> {{ $file->description }}</p>
                 <div class="mx-auto">
                     <a href="{{ $file->link }}" target="_blank" class="text-center btn btn-primary"
-                        style="width: 250px;">View and Download Here</a>
+                        style="width: 23    0px;"><span class="fas fa-download"></span> View and Download Here</a>
 
                 </div>
                 <p><span style="font-weight: 600;">Hashtag:</span> {{ $file->hashtag }}</p>

@@ -71,16 +71,19 @@
                             </li>
                         @endif
                         <li class="nav-item mt-1">
-                            <a class="nav-link text-dark" href="{{ route('home') }}"> &nbsp;Home</a>
+                            <a class="nav-link text-dark" href="{{ route('home') }}"><span class="fas fa-home"></span>
+                                Home</a>
                         </li>
 
                         <li class="nav-item mt-1">
-                            <a class="nav-link text-dark" href="{{ route('contact_information') }}"> &nbsp;Contact
+                            <a class="nav-link text-dark" href="{{ route('contact_information') }}"><span
+                                    class="fas fa-phone"></span> Contact
                                 Information</a>
                         </li>
 
                         <li class="nav-item mt-1">
-                            <a class="nav-link text-dark" href="{{ url('/about_us') }}"> &nbsp;About Us</a>
+                            <a class="nav-link text-dark" href="{{ url('/about_us') }}"><span
+                                    class="fas fa-question"></span> About Us</a>
                         </li>
 
                         @guest
