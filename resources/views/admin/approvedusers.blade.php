@@ -21,7 +21,7 @@
                             </div>
                         @endif
 
-                        <table class="table text-center">
+                        <table class="table text-center elevation-3">
                             <tr>
 
                                 <th>Profile Image</th>

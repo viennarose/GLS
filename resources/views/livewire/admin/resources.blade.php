@@ -61,7 +61,7 @@
                             </div>
                         @endif
 
-                        <table class="table text-center table-bordered">
+                        <table class="table text-center table-bordered elevation-3">
                             <tr>
                                 <th>Title</th>
                                 @if (auth()->check() && auth()->user()->admin == true)
@@ -140,7 +140,7 @@
                                                         <p class="text-dark">Are you sure you want to delete this
                                                             resource?</p>
                                                     </div>
-                                                    <div class="modal-body text-center">
+                                                    <div class="text-center">
                                                         <form>
                                                             @csrf
 

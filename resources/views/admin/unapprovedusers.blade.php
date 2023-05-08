@@ -22,7 +22,7 @@
                             </div>
                         @endif
 
-                        <table class="table text-center">
+                        <table class="table text-center elevation-3">
                             <tr>
                                 <th>Trash</th>
                                 <th scope="col" class="d-none d-md-table-cell d-lg-table-cell d-xl-table-cell">Email Verification Status</th>

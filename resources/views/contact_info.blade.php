@@ -115,7 +115,7 @@
                                 name="content" required></textarea>
                         </div>
 
-                        <button type="submit" class="btn btn-sm btn-success"><span class="fas fa-envelope"></span>
+                        <button type="submit" class="btn btn-sm btn-success mt-3"><span class="fas fa-envelope"></span>
                             Send Email</button>
                     </form>
                 </div>
