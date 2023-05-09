@@ -34,6 +34,7 @@ Route::middleware(['auth','approved'])->group(function () {
     Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
     Route::get('/contact_information', [ContactInformationController::class, 'index'])->name('contact_information');
     Route::get('/about_us', [AboutUsController::class, 'index'])->name('about_us');
+    Route::put('/update-profile/{id}', [ProfileController::class, 'update_profile'])->name('change_profile');
 
 
 });
@@ -48,6 +49,7 @@ Route::prefix('admin')->middleware(['auth', 'isAdmin'])->group(function () {
     Route::get('/users', [Admin_UserController::class, 'approvedIndex'])->name('admin.approved_users');
     Route::delete('/user/{id}', [Admin_UserController::class, 'delete_user'])->name('admin.delete_user');
     Route::get('/profile', [Admin_ProfileController::class, 'index'])->name('admin.profile');
+    Route::put('/update-profile/{id}', [Admin_ProfileController::class, 'update_profile'])->name('admin.change_profile');
 
 });
 

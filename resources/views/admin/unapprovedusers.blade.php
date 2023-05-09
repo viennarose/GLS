@@ -9,15 +9,14 @@
                         Approval Requests</div>
 
                     <div class="card-body">
-
                         @if ($message = Session::get('success_message'))
-                            <div class="alert alert-success alert-dismissible fade show mt-2" role="alert">
+                            <div class="alert alert-success alert-dismissible fade show mt-2 col-md-8 mx-auto" role="alert">
                                 <strong>{{ $message }}</strong>
                             </div>
                         @endif
 
                         @if ($message = Session::get('delete_message'))
-                            <div class="alert alert-danger alert-dismissible fade show mt-2" role="alert">
+                            <div class="alert alert-danger alert-dismissible fade show mt-2 col-md-8 mx-auto" role="alert">
                                 <strong>{{ $message }}</strong>
                             </div>
                         @endif

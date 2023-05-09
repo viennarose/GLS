@@ -19,7 +19,7 @@ class Resources extends Component
         'title' => $this->title
     ]);
 
-    return redirect('/admin/resources')->with('message', 'Created Successfully');
+    return redirect('/admin/resources')->with('message', 'Resources created successfully!');
 }
     public function editResources(int $resources_id){
         $resources = Resource::find($resources_id);
@@ -43,7 +43,7 @@ class Resources extends Component
 
         Resource::where('id',$this->resources_id)
                     ->update(['title' => $this->title]);
-        return redirect('admin/resources')->with('message', 'Updated Successfully');
+        return redirect('admin/resources')->with('message', 'Resources updated successfully!');
 
     }
 
@@ -56,7 +56,7 @@ class Resources extends Component
     {
 
         Resource::find($this->resources_id)->delete();
-        return redirect('admin/resources')->with('message', 'Deleted Successfully');
+        return redirect('admin/resources')->with('delete_message', 'Resources has been deleted!');
 
     }
 

@@ -1,4 +1,15 @@
 <div>
+    @if ($message = Session::get('message'))
+        <div class="alert alert-success alert-dismissible fade show mt-2 col-md-8 mx-auto" role="alert">
+            <strong>{{ $message }}</strong>
+        </div>
+    @endif
+
+    @if ($message = Session::get('delete_message'))
+        <div class="alert alert-danger alert-dismissible fade show mt-2 col-md-8 mx-auto" role="alert">
+            <strong>{{ $message }}</strong>
+        </div>
+    @endif
     <div class="container">
         <div class="row">
             <div class="col-md-12">
@@ -36,7 +47,7 @@
                     </button>
                     <div wire:ignore.self class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
                         aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog modal-md">
+                        <div class="modal-dialog modal-lg">
                             <div class="modal-content">
                                 <div class="modal-header text-dark">
                                     <h5 class="modal-title" id="exampleModalLabel">Adding Resources</h5>
@@ -109,19 +120,6 @@
                         </div>
                     </div>
                     <div class="card-body">
-
-                        @if ($message = Session::get('success_message'))
-                            <div class="alert alert-success alert-dismissible fade show mt-2" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </div>
-                        @endif
-
-                        @if ($message = Session::get('delete_message'))
-                            <div class="alert alert-danger alert-dismissible fade show mt-2" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </div>
-                        @endif
-
                         <table class="table text-center table-bordered elevation-3">
                             <tr>
                                 <th>Title</th>
@@ -154,7 +152,7 @@
                                         </button>
                                         <div wire:ignore.self class="modal fade" id="updateModal" tabindex="-1"
                                             role="dialog" aria-labelledby="updateModalLabel" aria-hidden="true">
-                                            <div class="modal-dialog modal-md">
+                                            <div class="modal-dialog modal-lg">
                                                 <div class="modal-content">
                                                     <div class="modal-header text-dark">
                                                         <h5 class="modal-title" id="updateModalLabel">Updating Files
@@ -291,3 +289,8 @@
         </div>
     </div>
 </div>
+<script>
+    setTimeout(function() {
+        $(' .alert-dismissible').fadeOut('slow');
+    }, 1000);
+</script>

@@ -1,4 +1,15 @@
 <div>
+    @if ($message = Session::get('message'))
+        <div class="alert alert-success alert-dismissible fade show mt-2 col-md-8 mx-auto" role="alert">
+            <strong>{{ $message }}</strong>
+        </div>
+    @endif
+
+    @if ($message = Session::get('delete_message'))
+        <div class="alert alert-danger alert-dismissible fade show mt-2 col-md-8 mx-auto" role="alert">
+            <strong>{{ $message }}</strong>
+        </div>
+    @endif
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-12">
@@ -50,19 +61,6 @@
                         </div>
                     </div>
                     <div class="card-body">
-
-                        @if ($message = Session::get('success_message'))
-                            <div class="alert alert-success alert-dismissible fade show mt-2" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </div>
-                        @endif
-
-                        @if ($message = Session::get('delete_message'))
-                            <div class="alert alert-danger alert-dismissible fade show mt-2" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </div>
-                        @endif
-
                         <table class="table text-center table-bordered elevation-3">
                             <tr>
                                 <th>Title</th>
@@ -217,3 +215,8 @@
         </div>
     </div>
 </div>
+<script>
+    setTimeout(function() {
+        $(' .alert-dismissible').fadeOut('slow');
+    }, 1000);
+</script>
