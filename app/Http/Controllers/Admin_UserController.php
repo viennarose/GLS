@@ -25,7 +25,7 @@ class Admin_UserController extends Controller
 
         $user->notify(new UserApprovedNotification());
         
-        return redirect()->route('admin.unapproved_users')->with('success_message', 'Request Approved successfully');
+        return redirect()->route('admin.unapproved_users')->with('success_message', 'Request approved successfully!');
     }
 
     public function delete_requests($id){
@@ -36,7 +36,7 @@ class Admin_UserController extends Controller
     $user = User::findOrFail($id);
     $user->delete();
 
-    return redirect()->back()->with('delete_message', 'Request Deleted');
+    return redirect()->back()->with('delete_message', 'Request has been deleted!');
 
     }
 
@@ -74,7 +74,7 @@ class Admin_UserController extends Controller
     $user = User::findOrFail($id);
     $user->delete();
 
-    return redirect()->back()->with('delete_message', 'User Deleted');
+    return redirect()->back()->with('delete_message', 'User has been deleted!');
 
     }
 }
