@@ -51,87 +51,10 @@
                                 Changes</button>
                         </div>
             </form>
-            <div>
-                <a href="#" data-toggle="modal" id="profile_link" class="btn btn-sm btn-danger "
-                    data-target="#profile_id{{ Auth::user()->id }}">
-                    <span class="text-light fas fa-key"></span> Change Password
-                </a>
-            </div>
-        </div>
-
-        <div class="col-md-6 mt-3">
-            <div class="modal-body">
-                <div class="mb-5">
-                    <div class="modal fade" id="profile_id{{ Auth::user()->id }}" tabindex="-1" role="dialog"
-                        aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog modal-" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" style="color:dimgray; font-size: 16px;">Change
-                                        Password</h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-
-                                <div class="modal-body">
-                                    {{-- <form action="{{ route('admin.update_profile', Auth::user()->id) }}"
-                                            method="POST">
-                                            @csrf --}}
-
-                                    @foreach ($errors->all() as $error)
-                                        <p class="text-danger">{{ $error }}</p>
-                                    @endforeach
-
-                                    <div class="form-group d-flex justify-content-center">
-                                        <label for="password"><span class="input-group-text text-light bg-danger"
-                                                style="width:42px;"><span class="fas fa-lock"
-                                                    style="font-size: 20px; height: 25px;"></span></span></label>
-
-                                        <div class="col-md-7">
-                                            <input id="password" type="password" class="form-control"
-                                                name="current_password" autocomplete="current-password"
-                                                placeholder="Current Password">
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group d-flex justify-content-center">
-                                        <label for="password"><span class="input-group-text text-light bg-dark"
-                                                style="width:42px;"><span class="fas fa-key"
-                                                    style="font-size: 20px; height: 25px;"></span></span></label>
-
-                                        <div class="col-md-7">
-                                            <input id="new_password" type="password" class="form-control"
-                                                name="new_password" autocomplete="current-password"
-                                                placeholder="New Password">
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group d-flex justify-content-center">
-                                        <label for="password"><span class="input-group-text text-light bg-dark"
-                                                style="width:42px;"><span class="fas fa-key"
-                                                    style="font-size: 20px; height: 25px;"></span></span></label>
-
-                                        <div class="col-md-7">
-                                            <input id="new_confirm_password" type="password" class="form-control"
-                                                name="new_confirm_password" autocomplete="current-password"
-                                                placeholder="Confirm New Password">
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group mb-0">
-                                        <div class="col-md-8 offset-md-7">
-                                            <button type="submit" class="btn btn-sm btn-success"><span
-                                                    class="fas fa-save"></span>
-                                                Update Password</button>
-                                        </div>
-                                    </div>
-                                    {{-- </form> --}}
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div class="mb-5">
+                <a href="{{ route('admin.change_password.index', ['id' => Auth::user()->id]) }}" type="btn"
+                    class="btn btn-sm btn-danger "><span class="fas fa-key"></span>
+                    Change Password</a>
             </div>
         </div>
     </div>
