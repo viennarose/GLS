@@ -13,6 +13,7 @@ use App\Http\Controllers\Admin_FileController;
 use App\Http\Controllers\Admin_HomeController;
 use App\Http\Controllers\Admin_UserController;
 use App\Http\Controllers\Admin_ProfileController;
+use App\Http\Controllers\admin_ChangePasswordController;
 
 
 
@@ -50,6 +51,8 @@ Route::prefix('admin')->middleware(['auth', 'isAdmin'])->group(function () {
     Route::delete('/user/{id}', [Admin_UserController::class, 'delete_user'])->name('admin.delete_user');
     Route::get('/profile', [Admin_ProfileController::class, 'index'])->name('admin.profile');
     Route::put('/update-profile/{id}', [Admin_ProfileController::class, 'update_profile'])->name('admin.change_profile');
+    Route::get('/change-password/{id}', [Admin_ChangePasswordController::class, 'index'])->name('admin.change_password.index');
+    Route::post('/change-password', [Admin_ChangePasswordController::class, 'change_password'])->name('admin.change_password');
 
 });
 

@@ -34,4 +34,5 @@ class ProfileController extends Controller
     return redirect()->back()->with('message', 'Profile Updated Successfully!');
 
     }
+
 }

@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use DB;
 use App\Models\User;
 
-
 class Admin_ProfileController extends Controller
 {
     public function index(){
@@ -34,5 +33,4 @@ class Admin_ProfileController extends Controller
     return redirect()->back()->with('message', 'Profile Updated Successfully!');
 
     }
-
 }
