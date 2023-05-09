@@ -1,6 +1,7 @@
 <aside class="main-sidebar sidebar-dark-primary">
     <a href="{{ route('admin.home_dashboard') }}" class="brand-link">
-        <img src="{{ url('/img/SC_BWgoldBlue.png') }}" alt="{{ config('app.name') }} Logo" class="brand-image img-circle">
+        <img src="{{ url('/img/SC_BWgoldBlue.png') }}" alt="{{ config('app.name') }} Logo" style="background-color:white;"
+            class="p-1 brand-image img-circle">
         <span class="brand-text">{{ config('app.name') }}</span>
     </a>
     <div class="sidebar">
@@ -14,12 +15,8 @@
 </aside>
 
 <style>
-    .brand-link {
-        background-color: white;
-    }
-
     .brand-text {
-        color: #565656;
+        color: white;
         font-weight: 400;
     }
 </style>
