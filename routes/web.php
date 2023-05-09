@@ -13,7 +13,7 @@ use App\Http\Controllers\Admin_FileController;
 use App\Http\Controllers\Admin_HomeController;
 use App\Http\Controllers\Admin_UserController;
 use App\Http\Controllers\Admin_ProfileController;
-use App\Http\Controllers\admin_ChangePasswordController;
+use App\Http\Controllers\Admin_ChangePasswordController;
 
 
 
