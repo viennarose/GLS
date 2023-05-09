@@ -40,12 +40,14 @@
 
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-xl text-dark bg-light shadow-sm fixed-top">
+        <nav class="navbar navbar-expand-xl text-light shadow-sm fixed-top" style="background-color: #353a40;">
             <div class="container">
 
                 <a class="navbar-brand" href="{{ route('home') }}">
-                    <img src="/img/SC_BWgoldBlue.png" style="height: 35px; margin-right: 10px;" alt="">
-                    {{ config('app.name', 'GLS') }}
+                    <img src="/img/SC_BWgoldBlue.png" class="p-1"
+                        style="height: 35px; margin-right: 10px; background-color:white; border-radius: 50%;"
+                        alt="">
+                    <span class="text-light"> {{ config('app.name', 'GLS') }}</span>
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
@@ -65,24 +67,24 @@
 
                         @if (auth()->check() && auth()->user()->admin == true)
                             <li class="nav-item mt-1">
-                                <a class="nav-link text-dark" href="{{ route('admin.home_dashboard') }}"><span
+                                <a class="nav-link text-light" href="{{ route('admin.home_dashboard') }}"><span
                                         class="fas fa-arrow-right"></span> Back to Admin Page &nbsp;&nbsp;</a>
 
                             </li>
                         @endif
                         <li class="nav-item mt-1">
-                            <a class="nav-link text-dark" href="{{ route('home') }}"><span class="fas fa-home"></span>
+                            <a class="nav-link text-light" href="{{ route('home') }}"><span class="fas fa-home"></span>
                                 Home</a>
                         </li>
 
                         <li class="nav-item mt-1">
-                            <a class="nav-link text-dark" href="{{ route('contact_information') }}"><span
+                            <a class="nav-link text-light" href="{{ route('contact_information') }}"><span
                                     class="fas fa-phone"></span> Contact
                                 Information</a>
                         </li>
 
                         <li class="nav-item mt-1">
-                            <a class="nav-link text-dark" href="{{ url('/about_us') }}"><span
+                            <a class="nav-link text-light" href="{{ url('/about_us') }}"><span
                                     class="fas fa-question"></span> About Us</a>
                         </li>
 
@@ -100,9 +102,11 @@
                             @endif
                         @else
                             <li class="nav-item dropdown">
-                                <a d="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
-                                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    <img src="/user_img/user_icon.png" style="height: 30px; width: 30px;"
+                                <a d="navbarDropdown" class="nav-link dropdown-toggle text-light" href="#"
+                                    role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                                    v-pre>
+                                    <img src="/user_img/user_icon.png"
+                                        style="height: 30px; width: 30px; background-color:white; border-radius: 50%; padding-top: 2px; padding-bottom: 2px; padding-right: 2px; padding-left: 2px;"
                                         class="user-image img-circle elevation-2" alt="User Image">
                                 </a>
 
