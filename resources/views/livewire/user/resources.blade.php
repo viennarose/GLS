@@ -1,7 +1,6 @@
 <div>
     <div class="mt-5 col-md-4 mx-auto">
-        <input type="search" wire:model="search" class="form-control input mb-3 mt-3 mx-auto"
-        placeholder="Search">
+        <input type="search" wire:model="search" class="form-control input mb-3 mt-3 mx-auto" placeholder="Search">
     </div>
     <div class="col-md-2 mx-end" style="margin-top: -10px;">
         <Label>Year</Label>
@@ -35,7 +34,7 @@
                 <p class="text-justify"><span style="font-weight: 600;">Description:</span> {{ $file->description }}</p>
                 <div class="mx-auto">
                     <a href="{{ $file->link }}" target="_blank" class="text-center btn btn-primary"
-                        style="width: 23    0px;"><span class="fas fa-download"></span> View and Download Here</a>
+                        style="width: 23    0px;"><span class="fas fa-download"></span> View to Download</a>
 
                 </div>
                 <p class="mt-2 text-justify"><span style="font-weight: 600;">Hashtag:</span> {{ $file->hashtag }}</p>
@@ -45,6 +44,3 @@
         @endforelse
     </div>
 </div>
-
-
-<p class="text-center" style="font-size: 30px;">On Progress</p>

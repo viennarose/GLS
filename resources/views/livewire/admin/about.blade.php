@@ -1,3 +1,3 @@
 <div>
-    <h5>On Progress</h5>
+    <h5 class="text-center">On Progress</h5>
 </div>

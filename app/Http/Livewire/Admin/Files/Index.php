@@ -36,7 +36,7 @@ class Index extends Component
             'link' => $this->link
         ]);
 
-            return redirect()->route('admin.files.index')->with('message', 'Created Successfully');
+            return redirect()->route('admin.files.index')->with('message', 'File created successfully!');
     }
 
     public function editFile(int $file_id){
@@ -76,7 +76,7 @@ class Index extends Component
             'hashtag' => $this->hashtag,
             'link' => $this->link
         ]);
-        return redirect()->route('admin.files.index')->with('message', 'Updated Successfully');
+        return redirect()->route('admin.files.index')->with('message', 'File updated successfully!');
 
     }
 
@@ -89,7 +89,7 @@ class Index extends Component
     {
 
         File::find($this->file_id)->delete();
-        return redirect()->route('admin.files.index')->with('message', 'Deleted Successfully');
+        return redirect()->route('admin.files.index')->with('delete_message', 'File has been deleted!');
 
     }
 
