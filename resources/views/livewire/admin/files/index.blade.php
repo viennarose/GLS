@@ -114,8 +114,8 @@
                                             </div>
                                             <div class="col-md-12">
                                                 <div class="form-group">
-                                                    <label for="exampleInputName">File</label>
-                                                    <input type="file" class="form-control" id="exampleInputName" wire:model="upload_file">
+                                                    <label for="file">File</label>
+                                                    <input type="file" class="form-control" id="file" wire:model="upload_file">
                                                     @error('upload_file') <span class="text-danger">{{ $message }}</span> @enderror
                                                 </div>
                                             </div>
@@ -135,7 +135,7 @@
                         <table class="table text-center table-bordered elevation-3">
                             <tr>
                                 <th>Title</th>
-                                <th>File</th>
+                                <th scope="col" class="d-none d-md-table-cell d-lg-table-cell d-xl-table-cell">File</th>
                                 <th scope="col" class="d-none d-md-table-cell d-lg-table-cell d-xl-table-cell">Date
                                 </th>
                                 <th>Link</th>
@@ -151,7 +151,11 @@
                                 <tr>
 
                                     <td class="text-wrap">{{ $file->title }}</td>
-                                    <td class="text-wrap">{{ $file->upload_file }}</td>
+
+                                    <td class="text-wrap"><div>
+                                        <span>{{ $file->upload_file }}</span>
+                                        <button wire:click="download('{{ $file->filename }}')">Download</button>
+                                    </div></td>
                                     <td scope="col" class="d-none d-md-table-cell d-lg-table-cell d-xl-table-cell">
                                         {{ $file->date }}</td>
                                     <td><a href="{{ $file->link }}">Link</a>
@@ -238,6 +242,13 @@
                                                                             style="color:dimgray">Hashtag</label>
                                                                         <input type="text" class="form-control"
                                                                             wire:model="hashtag" required>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-12">
+                                                                    <div class="form-group">
+                                                                        <label for="file">File</label>
+                                                                        <input type="file" class="form-control" id="file" wire:model="upload_file">
+                                                                        @error('upload_file') <span class="text-danger">{{ $message }}</span> @enderror
                                                                     </div>
                                                                 </div>
                                                             </div>

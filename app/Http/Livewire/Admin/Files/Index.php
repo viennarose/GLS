@@ -27,15 +27,52 @@ class Index extends Component
             'link' => ['string', 'required'],
             'upload_file' => ['mimes:pdf', 'nullable'],
         ]);
+        $filename = $this->upload_file->getClientOriginalName();
 
-        $filename = $this->upload_file->store('files','public');
+        $path = $this->upload_file->storeAs('public/files', $filename);
 
-        $validatedData['upload_file']=$filename;
+        File::create([
+            'title' => $this->title,
+            'resource_id' => $this->resource_id,
+            'date' => $this->date,
+            'hashtag' => $this->hashtag,
+            'link' => $this->link,
+            'description' => $this->description,
+            'upload_file' => $path,
 
-        File::create($validatedData);
+        ]);
 
         return redirect()->route('admin.files.index')->with('message', 'File created successfully!');
+
     }
+
+    public function download($filename)
+    {
+        $file = File::where('upload_file', $filename)->firstOrFail();
+
+        return Storage::download($file->path, $file->filename);
+    }
+
+
+    // public function addFile(){
+    //     $validatedData = $this->validate([
+    //         'resource_id' => ['required'],
+    //         'title' => ['required'],
+    //         'description' => ['string', 'required'],
+    //         'date' => ['string', 'required'],
+    //         'hashtag' => ['required'],
+    //         'link' => ['string', 'required'],
+    //         'upload_file' => ['mimes:pdf', 'nullable'],
+    //     ]);
+
+    //     $filename = $this->upload_file->store('files','public');
+
+    //     $validatedData['upload_file']=$filename;
+
+    //     File::create($validatedData);
+
+    //     return redirect()->route('admin.files.index')->with('message', 'File created successfully!');
+    // }
 
     public function editFile(int $file_id){
         $file = File::find($file_id);
@@ -53,6 +90,10 @@ class Index extends Component
         }
 
     }
+    // public function download($file){
+    //     return response()->download(storage_path('app/public/files' . $file->file_path));
+
+    // }
 
     public function updateFile(){
         $this->validate([
