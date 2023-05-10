@@ -7,36 +7,34 @@ use App\Models\File;
 use Livewire\Component;
 use App\Models\Resource;
 use Livewire\WithPagination;
+use Livewire\WithFileUploads;
 
 class Index extends Component
 {
 
+    use WithFileUploads;
     use WithPagination;
-    public $description, $date, $hashtag, $link, $resource_id, $title;
+    public $description, $date, $hashtag, $link, $resource_id, $upload_file, $title;
     public $byResource = 'all', $year;
     public $search;
     public function addFile(){
-
-        $this->validate([
+        $validatedData = $this->validate([
             'resource_id' => ['required'],
             'title' => ['required'],
             'description' => ['string', 'required'],
             'date' => ['string', 'required'],
             'hashtag' => ['required'],
             'link' => ['string', 'required'],
-
+            'upload_file' => ['mimes:pdf', 'nullable'],
         ]);
 
-        File::create([
-            'resource_id' => $this->resource_id,
-            'title' => $this->title,
-            'description' => $this->description,
-            'date' => $this->date,
-            'hashtag' => $this->hashtag,
-            'link' => $this->link
-        ]);
+        $filename = $this->upload_file->store('files','public');
 
-            return redirect()->route('admin.files.index')->with('message', 'File created successfully!');
+        $validatedData['upload_file']=$filename;
+
+        File::create($validatedData);
+
+        return redirect()->route('admin.files.index')->with('message', 'File created successfully!');
     }
 
     public function editFile(int $file_id){

@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('date')->nullable();
             $table->longText('link')->nullable();
             $table->string('hashtag')->nullable();
-            $table->string('sponsors')->nullable();
+            $table->string('upload_file')->nullable();
             $table->timestamps();
             $table->foreign('resource_id')->references('id')->on('resources')
             ->onUpdate('cascade');

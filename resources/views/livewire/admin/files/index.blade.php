@@ -63,6 +63,7 @@
                                                 <div class="form-group">
                                                     <label for="" style="color:dimgray">Title</label>
                                                     <input type="text" class="form-control" wire:model='title'>
+                                                    @error('title') <span class="text-danger">{{ $message }}</span> @enderror
                                                 </div>
                                             </div>
                                             <div class="col-md-12">
@@ -85,6 +86,7 @@
                                                 <div class="form-group">
                                                     <label for="" style="color:dimgray">Description</label>
                                                     <textarea type="text" class="form-control" rows="5" wire:model='description' required></textarea>
+                                                    @error('description') <span class="text-danger">{{ $message }}</span> @enderror
                                                 </div>
                                             </div>
                                             <div class="col-md-12">
@@ -92,12 +94,14 @@
                                                     <label for="" style="color:dimgray">Date</label>
                                                     <input type="date" class="form-control" wire:model='date'
                                                         required>
+                                                        @error('date') <span class="text-danger">{{ $message }}</span> @enderror
                                                 </div>
                                             </div>
                                             <div class="col-md-12">
                                                 <div class="form-group">
                                                     <label for="" style="color:dimgray">Document Link:</label>
                                                     <input type="text" class="form-control" wire:model="link">
+                                                    @error('link') <span class="text-danger">{{ $message }}</span> @enderror
                                                 </div>
                                             </div>
                                             <div class="col-md-12">
@@ -105,6 +109,14 @@
                                                     <label for="" style="color:dimgray">Hashtag</label>
                                                     <input type="text" class="form-control" wire:model="hashtag"
                                                         required>
+                                                        @error('hashtag') <span class="text-danger">{{ $message }}</span> @enderror
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label for="exampleInputName">File</label>
+                                                    <input type="file" class="form-control" id="exampleInputName" wire:model="upload_file">
+                                                    @error('upload_file') <span class="text-danger">{{ $message }}</span> @enderror
                                                 </div>
                                             </div>
                                         </div>
@@ -123,6 +135,7 @@
                         <table class="table text-center table-bordered elevation-3">
                             <tr>
                                 <th>Title</th>
+                                <th>File</th>
                                 <th scope="col" class="d-none d-md-table-cell d-lg-table-cell d-xl-table-cell">Date
                                 </th>
                                 <th>Link</th>
@@ -138,6 +151,7 @@
                                 <tr>
 
                                     <td class="text-wrap">{{ $file->title }}</td>
+                                    <td class="text-wrap">{{ $file->upload_file }}</td>
                                     <td scope="col" class="d-none d-md-table-cell d-lg-table-cell d-xl-table-cell">
                                         {{ $file->date }}</td>
                                     <td><a href="{{ $file->link }}">Link</a>
