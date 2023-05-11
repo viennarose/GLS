@@ -114,8 +114,8 @@
                                             </div>
                                             <div class="col-md-12">
                                                 <div class="form-group">
-                                                    <label for="file">File</label>
-                                                    <input type="file" class="form-control" id="file" wire:model="upload_file">
+                                                    <label for="file" style="color:dimgray">File</label><br>
+                                                    <input type="file" class="" id="file" wire:model="upload_file">
                                                     @error('upload_file') <span class="text-danger">{{ $message }}</span> @enderror
                                                 </div>
                                             </div>
@@ -245,8 +245,8 @@
                                                                 </div>
                                                                 <div class="col-md-12">
                                                                     <div class="form-group">
-                                                                        <label for="file">File</label>
-                                                                        <input type="file" class="form-control" id="file" wire:model="upload_file">
+                                                                        <label for="file"  style="color:dimgray">File</label>
+                                                                        <input type="file" class="" id="file" wire:model="upload_file">
                                                                         @error('upload_file') <span class="text-danger">{{ $message }}</span> @enderror
                                                                     </div>
                                                                 </div>
