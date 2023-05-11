@@ -59,8 +59,9 @@ class Admin_UserController extends Controller
    //For Approved Users
 
    public function approvedIndex(){
-    $users = User::whereNotNull('approved_at')
-    ->where('admin', '<>', 1)->get();
+    $users = User::whereNotNull('approved_at')->get();
+
+    // ->where('admin', '<>', 1)
 
     return view('admin.approvedusers', compact('users'));
    }
@@ -77,4 +78,18 @@ class Admin_UserController extends Controller
     return redirect()->back()->with('delete_message', 'User has been deleted!');
 
     }
+
+    public function updateRole(Request $request, $id){
+    $user = User::findOrFail($id);
+
+    $request->validate([
+        'admin' => 'required|boolean',
+    ]);
+
+    $user->admin = $request->input('admin');
+    $user->save();
+
+    return redirect()->back()->with('success_message', 'User role updated successfully!');
+    }
+
 }
