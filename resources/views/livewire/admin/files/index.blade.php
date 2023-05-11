@@ -138,12 +138,18 @@
                                             </div>
                                             <div class="col-md-12">
                                                 <div class="form-group">
+<<<<<<< HEAD
                                                     <label for="file">File</label>
                                                     <input type="file" class="form-control" id="file"
                                                         wire:model="upload_file">
                                                     @error('upload_file')
                                                         <span class="text-danger">{{ $message }}</span>
                                                     @enderror
+=======
+                                                    <label for="file" style="color:dimgray">File</label><br>
+                                                    <input type="file" class="" id="file" wire:model="upload_file">
+                                                    @error('upload_file') <span class="text-danger">{{ $message }}</span> @enderror
+>>>>>>> 357225bf0ba446090068304bd60981d178bda5bd
                                                 </div>
                                             </div>
                                         </div>
@@ -281,16 +287,9 @@
                                                                 </div>
                                                                 <div class="col-md-12">
                                                                     <div class="form-group">
-                                                                        <label for="file">File</label>
-                                                                        <input type="file" wire:model="new_upload_file" class="form-control" id="upload_file" name="upload_file">
-                                                                        @if ($new_upload_file)
-                                                                            <p>Selected file: {{ $new_upload_file->getClientOriginalName() }}</p>
-                                                                        @elseif ($selectedFile)
-                                                                            <p>Current file: <a href="{{ Storage::url($selectedFile->upload_file) }}" target="_blank">{{ $selectedFile->title }}</a></p>
-                                                                        @endif
-                                                                        @error('upload_file')
-                                                                            <span class="text-danger">{{ $message }}</span>
-                                                                        @enderror
+                                                                        <label for="file"  style="color:dimgray">File</label>
+                                                                        <input type="file" class="" id="file" wire:model="upload_file">
+                                                                        @error('upload_file') <span class="text-danger">{{ $message }}</span> @enderror
                                                                     </div>
                                                                 </div>
                                                             </div>
