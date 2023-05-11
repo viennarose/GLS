@@ -9,6 +9,7 @@ use App\Http\Controllers\AboutController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ResourcesController;
+use App\Http\Controllers\ChangePasswordController;
 use App\Http\Controllers\Admin_FileController;
 use App\Http\Controllers\Admin_HomeController;
 use App\Http\Controllers\Admin_UserController;
@@ -36,7 +37,8 @@ Route::middleware(['auth','approved'])->group(function () {
     Route::get('/contact_information', [ContactInformationController::class, 'index'])->name('contact_information');
     Route::get('/about_us', [AboutUsController::class, 'index'])->name('about_us');
     Route::put('/update-profile/{id}', [ProfileController::class, 'update_profile'])->name('change_profile');
-
+    Route::get('/change-password/{id}', [ChangePasswordController::class, 'index'])->name('change_password.index');
+    Route::post('/change-password', [ChangePasswordController::class, 'change_password'])->name('change_password');
 
 });
 
