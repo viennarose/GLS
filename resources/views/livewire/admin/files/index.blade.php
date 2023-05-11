@@ -138,18 +138,12 @@
                                             </div>
                                             <div class="col-md-12">
                                                 <div class="form-group">
-<<<<<<< HEAD
                                                     <label for="file">File</label>
                                                     <input type="file" class="form-control" id="file"
                                                         wire:model="upload_file">
                                                     @error('upload_file')
                                                         <span class="text-danger">{{ $message }}</span>
                                                     @enderror
-=======
-                                                    <label for="file" style="color:dimgray">File</label><br>
-                                                    <input type="file" class="" id="file" wire:model="upload_file">
-                                                    @error('upload_file') <span class="text-danger">{{ $message }}</span> @enderror
->>>>>>> 357225bf0ba446090068304bd60981d178bda5bd
                                                 </div>
                                             </div>
                                         </div>
