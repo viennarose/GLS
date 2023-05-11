@@ -151,11 +151,10 @@
                                 <tr>
 
                                     <td class="text-wrap">{{ $file->title }}</td>
-
-                                    <td class="text-wrap"><div>
-                                        <span>{{ $file->upload_file }}</span>
-                                        <button wire:click="download('{{ $file->filename }}')">Download</button>
-                                    </div></td>
+                                    <td>
+                                        {{-- <a href="{{ asset('storage/pdf/' . $file->upload_file) }}" target="_blank">{{ $file->upload_file }}</a> --}}
+                                        <a href="#" wire:click.prevent="download('{{ $file->upload_file }}')">Download</a>
+                                    </td>
                                     <td scope="col" class="d-none d-md-table-cell d-lg-table-cell d-xl-table-cell">
                                         {{ $file->date }}</td>
                                     <td><a href="{{ $file->link }}">Link</a>
@@ -314,8 +313,4 @@
         </div>
     </div>
 </div>
-<script>
-    setTimeout(function() {
-        $(' .alert-dismissible').fadeOut('slow');
-    }, 1000);
-</script>
+

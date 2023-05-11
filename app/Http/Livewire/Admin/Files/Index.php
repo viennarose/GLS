@@ -17,62 +17,42 @@ class Index extends Component
     public $description, $date, $hashtag, $link, $resource_id, $upload_file, $title;
     public $byResource = 'all', $year;
     public $search;
+
     public function addFile(){
         $validatedData = $this->validate([
-            'resource_id' => ['required'],
-            'title' => ['required'],
-            'description' => ['string', 'required'],
-            'date' => ['string', 'required'],
-            'hashtag' => ['required'],
-            'link' => ['string', 'required'],
-            'upload_file' => ['mimes:pdf', 'nullable'],
-        ]);
-        $filename = $this->upload_file->getClientOriginalName();
+            'title' => 'required|string|max:255',
+            'resource_id' =>'required',
+            'description' => 'required|string|max:255',
+            'date' => 'string|required',
+            'link' => 'string|required',
+            'hashtag' => 'required',
+            'upload_file' => 'required|mimes:pdf', //10MB max file size
 
-        $path = $this->upload_file->storeAs('public/files', $filename);
+
+        ]);
+
+        $file_name = $validatedData['upload_file']->getClientOriginalName();
+
+        $validatedData['upload_file']->storeAs('public/pdf', $file_name);
 
         File::create([
-            'title' => $this->title,
-            'resource_id' => $this->resource_id,
-            'date' => $this->date,
-            'hashtag' => $this->hashtag,
-            'link' => $this->link,
-            'description' => $this->description,
-            'upload_file' => $path,
+            'title' => $validatedData['title'],
+            'resource_id' => $validatedData['resource_id'],
+            'description' => $validatedData['description'],
+            'date' => $validatedData['date'],
+            'link' => $validatedData['link'],
+            'hashtag' => $validatedData['hashtag'],
+            'upload_file' => $file_name,
 
         ]);
 
         return redirect()->route('admin.files.index')->with('message', 'File created successfully!');
-
     }
 
-    public function download($filename)
+    public function download($file)
     {
-        $file = File::where('upload_file', $filename)->firstOrFail();
-
-        return Storage::download($file->path, $file->filename);
+        return response()->download(storage_path('app/public/pdf/' . $file));
     }
-
-
-    // public function addFile(){
-    //     $validatedData = $this->validate([
-    //         'resource_id' => ['required'],
-    //         'title' => ['required'],
-    //         'description' => ['string', 'required'],
-    //         'date' => ['string', 'required'],
-    //         'hashtag' => ['required'],
-    //         'link' => ['string', 'required'],
-    //         'upload_file' => ['mimes:pdf', 'nullable'],
-    //     ]);
-
-    //     $filename = $this->upload_file->store('files','public');
-
-    //     $validatedData['upload_file']=$filename;
-
-    //     File::create($validatedData);
-
-    //     return redirect()->route('admin.files.index')->with('message', 'File created successfully!');
-    // }
 
     public function editFile(int $file_id){
         $file = File::find($file_id);
