@@ -31,14 +31,14 @@
 <li class="nav-item">
     <a href="{{ url('admin/contact') }}"
         class="nav-link {{ Request::is('admin/contact*') ? 'bg-secondary active' : '' }}">
-        <p class="text-white">Contact</p>
+        <p class="text-white">Contact Information</p>
         <i class="fas fa-phone fa-pull-left fa-md text-white"></i>
     </a>
 </li>
 <li class="nav-item">
     <a href="{{ url('admin/about') }}"
         class="nav-link {{ Request::is('admin/about*') ? 'bg-secondary active' : '' }}">
-        <p class="text-white">About</p>
+        <p class="text-white">About Us</p>
         <i class="fas fa-question fa-pull-left fa-md text-white"></i>
     </a>
 </li>

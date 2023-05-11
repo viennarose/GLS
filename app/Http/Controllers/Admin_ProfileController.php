@@ -30,7 +30,7 @@ class Admin_ProfileController extends Controller
     }
 
     $profile->update();
-    return redirect()->back()->with('message', 'Profile Updated Successfully!');
+    return redirect()->back()->with('message', 'Profile updated successfully!');
 
     }
 }
