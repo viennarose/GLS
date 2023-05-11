@@ -59,7 +59,9 @@ Route::prefix('admin')->middleware(['auth', 'isAdmin'])->group(function () {
 Route::middleware(['auth', 'isAdmin'])->group(function () {
     Route::get('admin/resources', [ResourcesController::class, 'index']);
     Route::get('admin/about', [AboutController::class, 'index']);
+    Route::post('admin/about', [AboutController::class, 'store']);
     Route::get('admin/contact', [ContactController::class, 'index']);
+    Route::post('admin/contact', [ContactController::class, 'store']);
 });
 
 
