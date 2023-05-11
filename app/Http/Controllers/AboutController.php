@@ -21,14 +21,14 @@ class AboutController extends Controller
                 'about' => $request->about,
 
             ]);
-            return redirect('/admin/about')->with('message', 'about Updated Successfully!');
+            return redirect('/admin/about')->with('message', 'About page updated successfully!');
         }else{
             About::create([
                 'title' => $request->title,
                 'about' => $request->about,
 
             ]);
-            return redirect('/admin/about')->with('message', 'About Added Successfully!');
+            return redirect('/admin/about')->with('message', 'About page added successfully!');
         }
 
     }

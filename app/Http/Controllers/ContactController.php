@@ -22,7 +22,7 @@ class ContactController extends Controller
                 'email' => $request->email,
 
             ]);
-            return redirect('/admin/contact')->with('message', 'Contact Information Updated Successfully!');
+            return redirect('/admin/contact')->with('message', 'Contact Information updated successfully!');
         }else{
             Contact::create([
                 'name' => $request->name,
@@ -31,7 +31,7 @@ class ContactController extends Controller
                 'email' => $request->email,
 
             ]);
-            return redirect('/admin/contact')->with('message', 'Contact Information Added Successfully!');
+            return redirect('/admin/contact')->with('message', 'Contact Information added successfully!');
         }
 
     }
