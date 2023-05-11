@@ -22,22 +22,18 @@
     <hr>
     <div class="container mt-3">
         @forelse ($files as $file)
-            <div class="card text-start p-3 mb-2 shadow-lg">
+            <div class="card text-start p-3 mb-1 shadow-lg">
 
                 <div class="d-flex justify-content-between">
-                    <p><span style="font-weight: 600;">Date:</span>
-                        {{ Carbon\Carbon::parse($file->date)->format('F d, Y') }}</p>
-                    <p style="font-weight: 600; font-size: 12px;">{{ $file->resource->title }}</p>
+                    <p class="text-wrap text-center" style="font-size: 18px; font-weight: 500;">{{ $file->title }}</p>
+                    <p style="font-weight: 400; font-size: 12px;">{{ $file->resource->title }}</p>
                 </div>
-                <p class="text-wrap text-center" style="font-size: 18px; font-weight: 500;">{{ $file->title }}</p>
-                <hr>
-                <p class="text-justify"><span style="font-weight: 600;">Description:</span> {{ $file->description }}</p>
-                <div class="mx-auto">
-                    <a href="{{ $file->link }}" target="_blank" class="text-center btn btn-primary"
-                        style="width: 23    0px;"><span class="fas fa-download"></span> View to Download</a>
+                <p class="text-justify">{{ $file->description }}</p>
+                <div class="ms-auto">
+                    <a href="#" wire:click.prevent="download('{{ $file->upload_file }}')" class="text-center btn btn-primary"><span class="fas fa-download"></span> Download to View</a>
 
                 </div>
-                <p class="mt-2 text-justify"><span style="font-weight: 600;">Hashtag:</span> {{ $file->hashtag }}</p>
+
             </div>
         @empty
             No files found.
