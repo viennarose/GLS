@@ -55,6 +55,7 @@ Route::prefix('admin')->middleware(['auth', 'isAdmin'])->group(function () {
     Route::put('/update-profile/{id}', [Admin_ProfileController::class, 'update_profile'])->name('admin.change_profile');
     Route::get('/change-password/{id}', [Admin_ChangePasswordController::class, 'index'])->name('admin.change_password.index');
     Route::post('/change-password', [Admin_ChangePasswordController::class, 'change_password'])->name('admin.change_password');
+    Route::put('/update-role/{id}', [Admin_UserController::class, 'updateRole'])->name('admin.updateRole');
 
 });
 
