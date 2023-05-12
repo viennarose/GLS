@@ -33,7 +33,7 @@ class Index extends Component
         $file_name = '';
         if (isset($validatedData['upload_file']) && !empty($validatedData['upload_file'])) {
             $file_name = $validatedData['upload_file']->getClientOriginalName();
-            $validatedData['upload_file']->storeAs('/home/mdccapst/gls.mdc-capstone.com/GLS_System/storage/app/public/pdf/', $file_name);
+            $validatedData['upload_file']->storeAs('/home/mdccapst/gls.mdc-capstone.com/GLS_System/storage/app/public/pdf/'. $file_name);
         }
 
         File::create([
