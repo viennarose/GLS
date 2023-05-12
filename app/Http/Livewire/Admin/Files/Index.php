@@ -28,13 +28,13 @@ class Index extends Component
             'link' => 'string|nullable',
             'hashtag' => 'nullable',
             'upload_file' => 'nullable|mimes:pdf', //10MB max file size
-
-
         ]);
 
-        $file_name = $validatedData['upload_file']->getClientOriginalName();
-
-        $validatedData['upload_file']->storeAs('public/pdf', $file_name);
+        $file_name = '';
+        if (isset($validatedData['upload_file']) && !empty($validatedData['upload_file'])) {
+            $file_name = $validatedData['upload_file']->getClientOriginalName();
+            $validatedData['upload_file']->storeAs('public/pdf', $file_name);
+        }
 
         File::create([
             'title' => $validatedData['title'],
