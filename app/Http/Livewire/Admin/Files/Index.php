@@ -52,7 +52,7 @@ class Index extends Component
 
     public function download($file)
     {
-        return response()->download(storage_path('app/public/pdf/' . $file));
+        return response()->download(storage_path('/home/mdccapst/gls.mdc-capstone.com/GLS_System/storage/app/public/pdf/' . $file));
     }
 
     public function editFile(int $file_id){
