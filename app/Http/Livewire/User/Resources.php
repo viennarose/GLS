@@ -26,7 +26,10 @@ class Resources extends Component
         $files = $query->paginate(6);
         return compact('files');
     }
-
+    public function download($file)
+    {
+        return response()->download('/home/mdccapst/gls.mdc-capstone.com/GLS_System/storage/app/public/pdf/' . $file);
+    }
 
     public function render()
     {

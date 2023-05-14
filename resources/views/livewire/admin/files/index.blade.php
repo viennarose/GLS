@@ -13,19 +13,8 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <div class="d-flex justify-content-center">
-                    <input type="search" wire:model="search" class="form-control input mb-3 mt-3" style="width: 400px;"
-                        placeholder="Search">
-                </div>
-
-                <div class="col-md-12">
-                    <div class="form-group text-center d-flex justify-content-center" style="margin-top:10px;">
-                        <Label class="text-secondary" style="font-weight: 500;">Year &nbsp;</Label>
-                        <input type="number" style="width: 200px; margin-top: -10px;" class="form-control"
-                            wire:model="year" id="year" min="1900" max="{{ date('Y') }}" step="1"
-                            value="{{ date('Y') }}">
-                    </div>
-                    <div class="form-group">
+                <div class="d-flex justify-content-between">
+                    <div class="form-group mb-3 mt-3">
                         <select class="form-control" style="width: 230px;" wire:model="byResource">
                             <option selected value="all">Filter Resources</option>
                             @foreach ($resources as $resource)
@@ -37,8 +26,33 @@
                             <span class="error text-danger">{{ $message }}</span>
                         @enderror
                     </div>
-
+                    <div class="mb-3 mt-3">
+                        <input type="search" wire:model="search" class="form-control input" style="width: 400px;"
+                        placeholder="Search">
+                    </div>
                 </div>
+
+                {{-- <div class="col-md-12">
+                    <div class="form-group text-center d-flex justify-content-center" style="margin-top:10px;">
+                        <Label class="text-secondary" style="font-weight: 500;">Year &nbsp;</Label>
+                        <input type="number" style="width: 200px; margin-top: -10px;" class="form-control"
+                            wire:model="year" id="year" min="1900" max="{{ date('Y') }}" step="1"
+                            value="{{ date('Y') }}">
+
+                        <div class="form-group">
+                            <select class="form-control" style="width: 230px;" wire:model="byResource">
+                                <option selected value="all">Filter Resources</option>
+                                @foreach ($resources as $resource)
+                                    <option value="{{ $resource->id }}">{{ $resource->title }}
+                                    </option>
+                                @endforeach
+                            </select>
+                            @error('resource_id')
+                                <span class="error text-danger">{{ $message }}</span>
+                            @enderror
+                        </div>
+                    </div>
+                </div> --}}
                 <div class="card">
                     <div class="card-header text-center"><span class="fas fa-envelope"></span> FILES</div>
                     <button type="button" class="btn" style="background-color: #343a40; color:white;"
@@ -63,7 +77,9 @@
                                                 <div class="form-group">
                                                     <label for="" style="color:dimgray">Title</label>
                                                     <input type="text" class="form-control" wire:model='title'>
-                                                    @error('title') <span class="text-danger">{{ $message }}</span> @enderror
+                                                    @error('title')
+                                                        <span class="text-danger">{{ $message }}</span>
+                                                    @enderror
                                                 </div>
                                             </div>
                                             <div class="col-md-12">
@@ -86,7 +102,9 @@
                                                 <div class="form-group">
                                                     <label for="" style="color:dimgray">Description</label>
                                                     <textarea type="text" class="form-control" rows="5" wire:model='description' required></textarea>
-                                                    @error('description') <span class="text-danger">{{ $message }}</span> @enderror
+                                                    @error('description')
+                                                        <span class="text-danger">{{ $message }}</span>
+                                                    @enderror
                                                 </div>
                                             </div>
                                             <div class="col-md-12">
@@ -94,29 +112,38 @@
                                                     <label for="" style="color:dimgray">Date</label>
                                                     <input type="date" class="form-control" wire:model='date'
                                                         required>
-                                                        @error('date') <span class="text-danger">{{ $message }}</span> @enderror
+                                                    @error('date')
+                                                        <span class="text-danger">{{ $message }}</span>
+                                                    @enderror
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label for="" style="color:dimgray">Hashtag</label>
+                                                    <input type="text" class="form-control" wire:model="hashtag">
+                                                    @error('hashtag')
+                                                        <span class="text-danger">{{ $message }}</span>
+                                                    @enderror
                                                 </div>
                                             </div>
                                             <div class="col-md-12">
                                                 <div class="form-group">
                                                     <label for="" style="color:dimgray">Document Link:</label>
                                                     <input type="text" class="form-control" wire:model="link">
-                                                    @error('link') <span class="text-danger">{{ $message }}</span> @enderror
+                                                    @error('link')
+                                                        <span class="text-danger">{{ $message }}</span>
+                                                    @enderror
                                                 </div>
                                             </div>
                                             <div class="col-md-12">
                                                 <div class="form-group">
-                                                    <label for="" style="color:dimgray">Hashtag</label>
-                                                    <input type="text" class="form-control" wire:model="hashtag"
-                                                        required>
-                                                        @error('hashtag') <span class="text-danger">{{ $message }}</span> @enderror
-                                                </div>
-                                            </div>
-                                            <div class="col-md-12">
-                                                <div class="form-group">
-                                                    <label for="file" style="color:dimgray">File</label><br>
-                                                    <input type="file" class="" id="file" wire:model="upload_file">
-                                                    @error('upload_file') <span class="text-danger">{{ $message }}</span> @enderror
+                                                    <label for="file">File</label>
+                                                    <input type="file" class="form-control" id="file"
+                                                        wire:model="upload_file">
+                                                    @error('upload_file')
+                                                        <span class="text-danger">{{ $message }}</span>
+                                                    @enderror
                                                 </div>
                                             </div>
                                         </div>
@@ -135,7 +162,8 @@
                         <table class="table text-center table-bordered elevation-3">
                             <tr>
                                 <th>Title</th>
-                                <th scope="col" class="d-none d-md-table-cell d-lg-table-cell d-xl-table-cell">File</th>
+                                <th scope="col" class="d-none d-md-table-cell d-lg-table-cell d-xl-table-cell">File
+                                </th>
                                 <th scope="col" class="d-none d-md-table-cell d-lg-table-cell d-xl-table-cell">Date
                                 </th>
                                 <th>Link</th>
@@ -153,11 +181,16 @@
                                     <td class="text-wrap">{{ $file->title }}</td>
                                     <td>
                                         {{-- <a href="{{ asset('storage/pdf/' . $file->upload_file) }}" target="_blank">{{ $file->upload_file }}</a> --}}
-                                        <a href="#" wire:click.prevent="download('{{ $file->upload_file }}')">Download</a>
+                                        <a href="#"
+                                            wire:click.prevent="download('{{ $file->upload_file }}')">Download</a>
                                     </td>
                                     <td scope="col" class="d-none d-md-table-cell d-lg-table-cell d-xl-table-cell">
                                         {{ $file->date }}</td>
-                                    <td><a href="{{ $file->link }}">Link</a>
+                                    <td>@if($file->link != null)
+                                        <a href="{{ $file->link }}">Click link</a>
+                                        @else
+                                        Link Unavailable
+                                        @endif
                                     </td>
                                     <td scope="col" class="d-none d-md-table-cell d-lg-table-cell d-xl-table-cell">
                                         {{ $file->hashtag }}</td>
@@ -182,65 +215,68 @@
                                                     <div class="modal-body" style="text-align: start;">
                                                         <form>
                                                             @csrf
-                                                            <div class="container">
+                                                            <div class="container mx-auto">
                                                                 <div class="col-md-12">
                                                                     <div class="form-group">
-                                                                        <label for=""
-                                                                            style="color:dimgray">Title</label>
-                                                                        <input type="text" class="form-control"
-                                                                            wire:model='title'>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-md-12">
-                                                                    <div class="form-group">
-                                                                        <label for=""
-                                                                            style="color:dimgray">Select
-                                                                            Resources</label>
-                                                                        <select class="form-control"
-                                                                            style="width: 200px;"
-                                                                            wire:model="resource_id">
-                                                                            <option selected>Select Resources</option>
-                                                                            @foreach ($resources as $resource)
-                                                                                <option value="{{ $resource->id }}">
-                                                                                    {{ $resource->title }}</option>
-                                                                            @endforeach
-                                                                        </select>
-                                                                        @error('resource_id')
-                                                                            <span
-                                                                                class="error text-danger">{{ $message }}</span>
+                                                                        <label for="" style="color:dimgray">Title</label>
+                                                                        <input type="text" class="form-control" wire:model='title'>
+                                                                        @error('title')
+                                                                            <span class="text-danger">{{ $message }}</span>
                                                                         @enderror
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-md-12">
                                                                     <div class="form-group">
-                                                                        <label for=""
-                                                                            style="color:dimgray">Description</label>
+                                                                        <label for="" style="color:dimgray">Select Resources</label>
+                                                                        <select class="form-control" style="width: 200px;"
+                                                                            wire:model="resource_id">
+                                                                            <option selected>Select Resources</option>
+                                                                            @foreach ($resources as $resource)
+                                                                                <option value="{{ $resource->id }}">{{ $resource->title }}
+                                                                                </option>
+                                                                            @endforeach
+                                                                        </select>
+                                                                        @error('resource_id')
+                                                                            <span class="error text-danger">{{ $message }}</span>
+                                                                        @enderror
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-12">
+                                                                    <div class="form-group">
+                                                                        <label for="" style="color:dimgray">Description</label>
                                                                         <textarea type="text" class="form-control" rows="5" wire:model='description' required></textarea>
+                                                                        @error('description')
+                                                                            <span class="text-danger">{{ $message }}</span>
+                                                                        @enderror
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-md-12">
                                                                     <div class="form-group">
-                                                                        <label for=""
-                                                                            style="color:dimgray">Date</label>
-                                                                        <input type="date" class="form-control"
-                                                                            wire:model='date' required>
+                                                                        <label for="" style="color:dimgray">Date</label>
+                                                                        <input type="date" class="form-control" wire:model='date'
+                                                                            required>
+                                                                        @error('date')
+                                                                            <span class="text-danger">{{ $message }}</span>
+                                                                        @enderror
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="col-md-12">
+                                                                    <div class="form-group">
+                                                                        <label for="" style="color:dimgray">Hashtag</label>
+                                                                        <input type="text" class="form-control" wire:model="hashtag">
+                                                                        @error('hashtag')
+                                                                            <span class="text-danger">{{ $message }}</span>
+                                                                        @enderror
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-md-12">
                                                                     <div class="form-group">
-                                                                        <label for=""
-                                                                            style="color:dimgray">Document
-                                                                            Link:</label>
-                                                                        <input type="text" class="form-control"
-                                                                            wire:model="link">
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-md-12">
-                                                                    <div class="form-group">
-                                                                        <label for=""
-                                                                            style="color:dimgray">Hashtag</label>
-                                                                        <input type="text" class="form-control"
-                                                                            wire:model="hashtag" required>
+                                                                        <label for="" style="color:dimgray">Document Link:</label>
+                                                                        <input type="text" class="form-control" wire:model="link">
+                                                                        @error('link')
+                                                                            <span class="text-danger">{{ $message }}</span>
+                                                                        @enderror
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-md-12">
@@ -313,4 +349,3 @@
         </div>
     </div>
 </div>
-
