@@ -28,7 +28,7 @@ class Resources extends Component
     }
     public function download($file)
     {
-        return response()->download('/home/mdccapst/gls.mdc-capstone.com/GLS_System/storage/app/public/pdf/' . $file);
+        return response()->download(storage_path('/app/files/' . $file));
     }
 
     public function render()

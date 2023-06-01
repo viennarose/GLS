@@ -65,6 +65,13 @@ Route::middleware(['auth', 'isAdmin'])->group(function () {
     Route::post('admin/about', [AboutController::class, 'store']);
     Route::get('admin/contact', [ContactController::class, 'index']);
     Route::post('admin/contact', [ContactController::class, 'store']);
+
+
+    Route::get('/admin/files', [Admin_FileController::class, 'index'])->name('admin.files.index');
+    Route::post('/add-files', [Admin_FileController::class, 'store']);
+    Route::post('/add-programs', [Admin_FileController::class, 'storeProgram']);
+    Route::get('/delete_files/{id}', [Admin_FileController::class, 'delete_files']);
+    Route::put('/update-files/{id}', [Admin_FileController::class, 'update_files']);
 });
 
 
