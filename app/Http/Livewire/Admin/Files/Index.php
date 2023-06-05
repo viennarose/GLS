@@ -23,7 +23,7 @@ class Index extends Component
         $validatedData = $this->validate([
             'title' => 'required|string',
             'resource_id' =>'required',
-            'description' => 'required|string',
+            'description' => 'string|nullable',
             'date' => 'date|nullable',
             'link' => 'string|nullable',
             'hashtag' => 'nullable',
@@ -79,7 +79,7 @@ class Index extends Component
         $validatedData = $this->validate([
             'title' => 'required|string',
             'resource_id' =>'required',
-            'description' => 'required|string',
+            'description' => 'string|nullable',
             'date' => 'date|nullable',
             'link' => 'string|nullable',
             'hashtag' => 'nullable',

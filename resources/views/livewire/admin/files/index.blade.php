@@ -101,10 +101,10 @@
                                             <div class="col-md-12">
                                                 <div class="form-group">
                                                     <label for="" style="color:dimgray">Description</label>
-                                                    <textarea type="text" class="form-control" rows="5" wire:model='description' required></textarea>
-                                                    @error('description')
+                                                    <textarea type="text" class="form-control" rows="5" wire:model='description' ></textarea>
+                                                    {{-- @error('description')
                                                         <span class="text-danger">{{ $message }}</span>
-                                                    @enderror
+                                                    @enderror --}}
                                                 </div>
                                             </div>
                                             <div class="col-md-12">
@@ -244,10 +244,10 @@
                                                                 <div class="col-md-12">
                                                                     <div class="form-group">
                                                                         <label for="" style="color:dimgray">Description</label>
-                                                                        <textarea type="text" class="form-control" rows="5" wire:model='description' required></textarea>
-                                                                        @error('description')
+                                                                        <textarea type="text" class="form-control" rows="5" wire:model='description' ></textarea>
+                                                                        {{-- @error('description')
                                                                             <span class="text-danger">{{ $message }}</span>
-                                                                        @enderror
+                                                                        @enderror --}}
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-md-12">
