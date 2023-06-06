@@ -42,7 +42,7 @@
                 <p class="reg_title">
                     Register an Account</p>
 
-                <form method="POST" action="{{ route('register') }}">
+                <form id="loginForm" method="POST" action="{{ route('register') }}">
                     @csrf
 
                     <div class="row" style="margin-bottom: 20px;">
@@ -95,7 +95,8 @@
                     </label>
 
                     <div class="row button" style="margin-top: 20px;">
-                        <input type="submit" value="Register">
+                        <input type="submit" id="registerButton"  value="Register">
+                    <p id="loadingText" style="display: none; text-align:center; font-size: 18px;">Please wait...</p>
                     </div>
                     <div class="login-link">Already have an account? <a href="/login">Login</a></div>
                 </form>
@@ -104,6 +105,14 @@
     </body>
 
     </html>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function () {
+            document.getElementById('registerButton').style.display = 'none';
+            document.getElementById('loadingText').style.display = 'inline';
+        });
+    </script>
+
 
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');

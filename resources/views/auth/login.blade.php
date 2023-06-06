@@ -82,7 +82,7 @@
                     <div class="pass"><a href="{{ route('password.request') }}">Forgot password?</a></div>
                     <div class="row button">
                         <input type="submit" id="loginButton"  value="Login">
-                    <p id="loadingGif" style="display: none; text-align:center; font-size: 18px;">Please wait...</p>
+                    <p id="loadingText" style="display: none; text-align:center; font-size: 18px;">Please wait...</p>
                     </div>
                     <div class="signup-link">Don't have an account? <a href="/register">Register</a></div>
                 </form>
@@ -95,7 +95,7 @@
     <script>
         document.getElementById('loginForm').addEventListener('submit', function () {
             document.getElementById('loginButton').style.display = 'none';
-            document.getElementById('loadingGif').style.display = 'inline';
+            document.getElementById('loadingText').style.display = 'inline';
         });
     </script>
 
