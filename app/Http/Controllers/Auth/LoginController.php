@@ -7,6 +7,7 @@ use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 
 class LoginController extends Controller
 {
@@ -29,7 +30,7 @@ class LoginController extends Controller
      * @var string
      */
     // protected $redirectTo = RouteServiceProvider::HOME;
-   
+
     protected function redirectTo(){
         if (Auth::check() && Auth::user()->admin) {
             return route('admin.home_dashboard');
@@ -37,6 +38,23 @@ class LoginController extends Controller
             return route('home');
         }
       }
+
+
+      protected function authenticated(Request $request, $user)
+    {
+        $this->sendLoginNotificationEmail($user);
+    }
+
+    private function sendLoginNotificationEmail($user)
+    {
+        $email = $user->email;
+        $subject = 'GLS Login Notification';
+        $body = 'You have logged in to the GLS System.';
+
+        Mail::raw($body, function ($message) use ($email, $subject) {
+            $message->to($email)->subject($subject);
+        });
+    }
 
     /**
      * Create a new controller instance.
