@@ -45,7 +45,7 @@
                 <p class="title1">THE REGIUS AND COOKE</p>
                 <p class="title2">(Increasing the Power of the Hands)</p>
 
-                <form method="POST" action="{{ route('login') }}">
+                <form id="loginForm" method="POST" action="{{ route('login') }}">
                     @csrf
 
                     <div class="row" style="margin-bottom: 20px; margin-top: -30px;">
@@ -81,7 +81,8 @@
 
                     <div class="pass"><a href="{{ route('password.request') }}">Forgot password?</a></div>
                     <div class="row button">
-                        <input type="submit" value="Login">
+                        <input type="submit" id="loginButton"  value="Login">
+                    <p id="loadingGif" style="display: none; text-align:center; font-size: 18px;">Please wait...</p>
                     </div>
                     <div class="signup-link">Don't have an account? <a href="/register">Register</a></div>
                 </form>
@@ -90,6 +91,13 @@
     </body>
 
     </html>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function () {
+            document.getElementById('loginButton').style.display = 'none';
+            document.getElementById('loadingGif').style.display = 'inline';
+        });
+    </script>
 
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
